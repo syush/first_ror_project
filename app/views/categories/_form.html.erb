@@ -1,0 +1,10 @@
+<%= form_for(@category) do |f| %>
+
+  <div class="field">
+    <p>Введите название категории:</p>
+    <%= f.text_area :title %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
