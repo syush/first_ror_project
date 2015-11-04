@@ -4319,3 +4319,101 @@ Processing by CategoriesController#index as HTML
   [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories"
   Rendered categories/index.html.erb within layouts/application (2.9ms)
 Completed 200 OK in 147ms (Views: 145.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2015-11-04 23:55:06 +0300
+Processing by CategoriesController#index as HTML
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.2ms)
+
+NameError (undefined local variable or method `title' for #<Class:0x007ff03d4fc920>):
+  app/models/category.rb:2:in `<class:Category>'
+  app/models/category.rb:1:in `<top (required)>'
+  app/controllers/categories_controller.rb:4:in `index'
+
+
+  Rendered /home/osboxes/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (47.1ms)
+  Rendered /home/osboxes/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (25.5ms)
+  Rendered /home/osboxes/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /home/osboxes/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (139.8ms)
+  Rendered /home/osboxes/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/osboxes/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/osboxes/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/osboxes/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/osboxes/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (72.4ms)
+  Rendered /home/osboxes/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/osboxes/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (8.4ms)
+  Rendered /home/osboxes/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (131.4ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2015-11-04 23:56:42 +0300
+Processing by CategoriesController#index as HTML
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 324ms (Views: 300.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2015-11-04 23:56:46 +0300
+Processing by CategoriesController#new as HTML
+  Rendered categories/_form.html.erb (3.1ms)
+  Rendered categories/new.html.erb within layouts/application (30.6ms)
+Completed 200 OK in 178ms (Views: 176.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/categories" for 127.0.0.1 at 2015-11-04 23:56:48 +0300
+Processing by CategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VZPtuSq5KYYyE/4JeJpqt1FYTDsfZZko5jtCcKGyVWH8HRcl6YHeE9/tKga3F89+3qYitLLXkGYoW70M/YFDlw==", "category"=>{"title"=>""}, "commit"=>"Create Category"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered categories/_form.html.erb (13.7ms)
+  Rendered categories/new.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 214ms (Views: 193.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/categories" for 127.0.0.1 at 2015-11-04 23:57:14 +0300
+Processing by CategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TdT66WEFiP4V9wI2ffF+38vxpJDtGp9c2JG6ZrZ7C53kWgB1oj1/a/gJ1jmyfNsWRA/KH0ColhIW8UUa6kgdaw==", "category"=>{"title"=>"Программирование"}, "commit"=>"Create Category"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (8.2ms)[0m  [1mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Программирование"], ["created_at", "2015-11-04 20:57:14.680570"], ["updated_at", "2015-11-04 20:57:14.680570"]]
+  [1m[35m (19.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/categories/5
+Completed 302 Found in 34ms (ActiveRecord: 27.5ms)
+
+
+Started GET "/categories/5" for 127.0.0.1 at 2015-11-04 23:57:14 +0300
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered categories/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 167ms (Views: 165.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2015-11-05 00:01:09 +0300
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (48.4ms)
+Completed 200 OK in 483ms (Views: 468.7ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2015-11-05 00:01:12 +0300
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (8.7ms)
+  Rendered posts/new.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 431ms (Views: 426.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2015-11-05 00:01:31 +0300
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oYRHYF6rL1+aZHjzq1ost7fGkhFjUCnia9ImAavJeC4ICr38nZPYynearPxk14l+ODj8ns7iIKylstl99/pu2A==", "post"=>{"title"=>"All my loving", "body"=>"All my loving\r\nI will send to you"}, "commit"=>"Create Post"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.7ms)[0m  INSERT INTO "posts" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "All my loving"], ["body", "All my loving\r\nI will send to you"], ["created_at", "2015-11-04 21:01:31.254376"], ["updated_at", "2015-11-04 21:01:31.254376"]]
+  [1m[36m (26.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/posts/2
+Completed 302 Found in 39ms (ActiveRecord: 30.3ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2015-11-05 00:01:31 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered posts/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 182ms (Views: 179.6ms | ActiveRecord: 0.2ms)
