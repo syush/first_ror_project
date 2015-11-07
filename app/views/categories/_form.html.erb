@@ -1,5 +1,6 @@
 <%= form_for(@category) do |f| %>
 
+  <%= render 'error/handle', :errors => @category.errors  %>
   <div class="field">
     <p>Введите название категории:</p>
     <%= f.text_area :title %>

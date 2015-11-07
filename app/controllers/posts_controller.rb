@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   def show
+    @comment = Comment.new
   end
 
   # GET /posts/new

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   get 'welcome/index'
-
-  resources :comments
-  resources :posts
+  resources :posts do
+    resources :comments, shallow: true
+  end
   resources :categories
-  root 'welcome#index'
+  root 'posts#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
