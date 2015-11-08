@@ -41,7 +41,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-
+    @posts = Post.select {|post| post.categories.include?(@category)}
   end
 
   private

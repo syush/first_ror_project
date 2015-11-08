@@ -1,0 +1,9 @@
+<% @posts.each do |post| %>
+    <h3><%= link_to post.title, post%></h3>
+    <p>
+      <%= render 'posts/category_list', post:post %>
+    </p>
+    <p><%= truncate(post.body, length:100) %></p>
+    <p><%= link_to 'Читать далее...', post %></p>
+    <br>
+<% end %>

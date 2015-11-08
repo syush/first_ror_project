@@ -1,9 +1,7 @@
-<p id="notice"><%= notice %></p>
+<h1>Публикации в категории "<%= @category.title %>"</h1>
 
-<p>
-  <strong>Название:</strong>
-  <%= @category.title %>
-</p>
+<p class="field_navigation"><%= link_to 'Редактировать название категории', edit_category_path(@category) %>
 
-<%= link_to 'Редактировать', edit_category_path(@category) %> |
-<%= link_to 'Назад', categories_path %>
+<%= render 'posts/list_posts' %>
+
+<%= link_to 'Ко всем категориям', posts_path %>

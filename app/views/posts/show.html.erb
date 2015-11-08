@@ -1,5 +1,6 @@
 <h2 class="post_title"><%= @post.title %></h2>
-<hr>
+<p class="post_categories"><%= render 'category_list', post:@post %></p>
+<p class="field_navigation"></p>
 <p class="post_body"><%= @post.body %></p>
 <hr>
 <% if @post.comments.any? %>

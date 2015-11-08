@@ -9,6 +9,10 @@
     <strong>Текст публикации:</strong>
     <p><%= f.text_area :body %></p>
   </div>
+  <div class="field">
+    <strong>Категории:</strong>
+    <p><%= f.collection_select :category_ids, @categories, :id, :title, {}, {multiple:true}%></p>
+  </div>
   <div class="actions">
     <%= f.submit "Опубликовать" %>
   </div>
