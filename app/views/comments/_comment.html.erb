@@ -1,4 +1,10 @@
 <p class="comment_body">
   <%= comment.body %>
 </p>
+<p class="comment_links">
+  <% if current_user == comment.user %>
+    <%= link_to "Редактировать", edit_comment_path(comment) %> |
+    <%= link_to "Удалить", comment, method: :delete, data:{confirm:"Вы уверены, что хотите удалить комментарий?"}%>
+<% end %>
+</p>
 

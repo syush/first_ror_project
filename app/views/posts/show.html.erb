@@ -14,5 +14,10 @@
 <% end %>
 <%= render 'comments/form' %>
 <hr>
-<%= link_to 'Редактировать публикацию', edit_post_path(@post) %> |
-<%= link_to 'Назад', posts_path %>
+<p class="post_links">
+  <% if @post.user == current_user %>
+    <%= link_to 'Редактировать публикацию', edit_post_path(@post) %> |
+    <%= link_to "Удалить публикацию", @post, method: :delete, data:{confirm:"Вы уверены, что хотите удалить публикацию?"}%> |
+  <% end %>
+  <%= link_to 'Список всех публикаций', posts_path %>
+</p>

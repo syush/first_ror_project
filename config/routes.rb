@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'welcome/index'
   resources :posts do
     resources :comments, shallow: true
   end
   resources :categories
+  resources :users
   root 'posts#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

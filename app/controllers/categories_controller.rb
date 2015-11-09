@@ -13,35 +13,28 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-
-    respond_to do |format|
-      if @category.save
-        format.html { redirect_to @category, notice: 'Категория создана успешно.' }
-      else
-        format.html { render :new }
-      end
+    if @category.save
+      redirect_to @category, notice: 'Категория создана успешно.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @category.update(category_params)
-        format.html { redirect_to @category, notice: 'Мы успешно обновили название категории.' }
-      else
-        format.html { render :edit }
-      end
+    if @category.update(category_params)
+      redirect_to @category, notice: 'Мы успешно обновили название категории.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @category.destroy
-    respond_to do |format|
-      format.html { redirect_to categories_url, notice: 'Категория удалена.' }
-    end
+    redirect_to categories_url, notice: 'Категория удалена.'
   end
 
   def show
-    @posts = Post.select {|post| post.categories.include?(@category)}
+    @posts = @category.posts
   end
 
   private

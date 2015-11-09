@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_categories
 
+  def abort_if_non_authorized(object)
+    unless object.user == current_user
+      redirect_to :root, alert: "У вас нет прав для выполнения этого действия"
+    end
+  end
+
+  private
+
   def set_categories
     @categories = Category.all
   end

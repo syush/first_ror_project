@@ -2,6 +2,6 @@
 
 <p class="field_navigation"><%= link_to 'Редактировать название категории', edit_category_path(@category) %>
 
-<%= render 'posts/list_posts' %>
+<%= render @posts %>
 
 <%= link_to 'Ко всем категориям', posts_path %>

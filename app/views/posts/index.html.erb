@@ -1,7 +1,6 @@
-<p id="notice"><%= notice %></p>
 
 <h1 class="page_name">Все публикации</h1>
 
-<%= render 'list_posts' %>
+<%= render @posts %>
 
 <%= link_to 'Создать новую публикацию', new_post_path %>
