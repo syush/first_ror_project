@@ -2,13 +2,13 @@
 <p class="post_categories"><%= render 'category_list', post:@post %></p>
 <p class="post_author"><%= render 'author', post:@post %></p>
 <p class="field_navigation"></p>
-<p class="post_body"><%= @post.body %></p>
+<% @post.body.split("\n").each do |paragraph| %>
+  <p class="post_body"><%= paragraph %></p>
+<% end %>
 <hr>
 <% if @post.comments.any? %>
   <h4 class="field_navigation">Комментарии:</h4>
-  <% @post.comments.each do |comment| %>
-        <%= render comment %>
-  <% end %>
+  <%= render @post.comments %>
   <h4 class="field_navigation">Оставьте свой комментарий:</h4>
 <% else %>
   <h4 class="field_navigation">К этой публикации пока нет комментариев. Поделитесь своим мнением.</h4>

@@ -4,6 +4,5 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_to :root
   end
 end
