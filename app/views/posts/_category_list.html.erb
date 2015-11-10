@@ -1,4 +1,2 @@
-<% unless post.categories.empty? %>
-    Категории:
-<% end %>
+<%= "Категории:" unless post.categories.empty? %>
 <%= raw(post.categories.map { |category| link_to category.title, category }.join(", ")) %>
