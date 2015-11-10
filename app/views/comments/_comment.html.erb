@@ -1,10 +1,19 @@
-<p class="comment_body">
-  <%= comment.body %>
-</p>
-<p class="comment_links">
-  <% if current_user == comment.user %>
-    <%= link_to "Редактировать", edit_comment_path(comment) %> |
-    <%= link_to "Удалить", comment, method: :delete, data:{confirm:"Вы уверены, что хотите удалить комментарий?"}%>
-<% end %>
-</p>
+<div class="row">
 
+  <p class="comment_author col-md-3">
+    <% if current_user == comment.user %>
+        Вы написали:
+    <% else %>
+        <%= comment.user ? comment.user.email : "Неизвестный пользователь" %> написал(а):
+    <% end %>
+  </p>
+  <p class="comment_body col-md-6">
+    <%= comment.body %>
+  </p>
+  <p class="comment_links col-md-3">
+    <% if current_user == comment.user %>
+      <%= link_to "Редактировать", edit_comment_path(comment) %> |
+      <%= link_to "Удалить", comment, method: :delete, data:{confirm:"Вы уверены, что хотите удалить комментарий?"}%>
+  <% end %>
+  </p>
+</div>
