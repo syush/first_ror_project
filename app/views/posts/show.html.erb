@@ -15,8 +15,8 @@
 <% end %>
 <%= render 'comments/form' %>
 <hr>
-<p class="post_links">
-  <% if @post.user == current_user %>
+<p class="links">
+  <% if have_rights_for?(@post) %>
     <%= link_to 'Редактировать публикацию', edit_post_path(@post) %> |
     <%= link_to "Удалить публикацию", @post, method: :delete, data:{confirm:"Вы уверены, что хотите удалить публикацию?"}%> |
   <% end %>

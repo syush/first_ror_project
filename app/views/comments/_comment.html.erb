@@ -10,8 +10,8 @@
   <p class="comment_body col-md-6">
     <%= comment.body %>
   </p>
-  <p class="comment_links col-md-3">
-    <% if current_user == comment.user %>
+  <p class="links col-md-3">
+    <% if have_rights_for?(comment) %>
       <%= link_to "Редактировать", edit_comment_path(comment) %> |
       <%= link_to "Удалить", comment, method: :delete, data:{confirm:"Вы уверены, что хотите удалить комментарий?"}%>
   <% end %>

@@ -2,17 +2,6 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @comments = Comment.all
-  end
-
-  def show
-  end
-
-  def new
-    @comment = Comment.new
-  end
-
   def edit
     abort_if_non_authorized(@comment)
   end
@@ -22,10 +11,11 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to @comment.post, notice: 'Комментарий успешно добавлен.'
+      flash[:notice] = 'Комментарий успешно добавлен.'
     else
-      render :new
+      flash[:alert] = 'Комментарий не должен быть пустым'
     end
+    redirect_to @post
   end
 
   def update
@@ -33,6 +23,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to @comment.post, notice: 'Комментарий успешно обновлен.'
     else
+      flash.now[:alert] = 'Комментарий не должен быть пустым'
       render :edit
     end
   end

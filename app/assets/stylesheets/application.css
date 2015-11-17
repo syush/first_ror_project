@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+.links {
+    font-style: italic;
+    font-size:14px;
+}
+.page_name {
+    font-size:36px
+}
+.big_list_items {
+    font-size:18px;
+}

@@ -29,6 +29,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: 'Публикация успешно создана.'
     else
+      flash.now[:alert] = 'Заголовок и тело публикации не должны быть пустыми'
       render :new
     end
   end
@@ -46,23 +47,18 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   def destroy
     abort_if_non_authorized(@post)
-    if @post.user != current_user
-      redirect_to :root, alert: "У вас нет прав для удаления этой публикации"
-    else
-      @post.destroy
-      redirect_to posts_url, notice: 'Публикация успешно удалена.'
-    end
+    @post.destroy
+    redirect_to posts_url, notice: 'Публикация успешно удалена.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
 
-    end
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-     # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:title, :body, :category_ids => [])
-    end
+   # Never trust parameters from the scary internet, only allow the white list through.
+  def post_params
+    params.require(:post).permit(:title, :body, :category_ids => [])
+  end
 end

@@ -1,0 +1,15 @@
+<h1 class="page_name">Управление пользователями</h1>
+<% @users.each do |user| %>
+    <p>
+      <span class="big_list_items">
+        <%= user.email %>
+      </span>
+      <% if user.admin? %>
+          <span class="big_list_items"> (администратор) </span>
+      <% end %>
+      <span class="links">
+        | <%= link_to "Удалить", [:admin, user], method: :delete,
+                    data:{confirm:"Вы уверены, что хотите удалить пользователя \"#{user.email}\"?"}%>
+      </span>
+    </p>
+<% end %>
