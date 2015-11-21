@@ -1,7 +1,7 @@
 <h2 class="post_title"><%= @post.title %></h2>
 <p class="post_categories"><%= render 'category_list', post:@post %></p>
 <p class="post_author"><%= render 'author', post:@post %></p>
-<p><%= render 'posts/if_draft', post:@post %></p>
+<p><%= render 'posts/status', post:@post %></p>
 <p class="field_navigation"></p>
 <% @post.body.split("\n").each do |paragraph| %>
   <p class="post_body"><%= paragraph %></p>

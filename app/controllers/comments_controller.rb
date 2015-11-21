@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   def edit
-    abort_if_non_authorized(@comment)
+    abort_if_not_authorized(@comment)
   end
 
   def create
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    abort_if_non_authorized(@comment)
+    abort_if_not_authorized(@comment)
     if @comment.update(comment_params)
       redirect_to @comment.post, notice: 'Комментарий успешно обновлен.'
     else
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    abort_if_non_authorized(@comment)
+    abort_if_not_authorized(@comment)
     @comment.destroy
     redirect_to @comment.post, notice: 'Комментарий успешно удален.'
   end

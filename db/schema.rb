@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121112228) do
+ActiveRecord::Schema.define(version: 20151121140354) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20151121112228) do
     t.datetime "updated_at",                 null: false
     t.integer  "user_id"
     t.boolean  "published",  default: false
+    t.boolean  "pending",    default: false
   end
 
   create_table "profiles", force: :cascade do |t|

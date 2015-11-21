@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy, :publish,
-                                  :unpublish, :subscribe, :unsubscribe]
+                                  :unpublish, :subscribe, :unsubscribe, :approve, :discard]
+  before_action :abort_if_not_admin!, only:[:discard, :approve]
 
   # GET /posts
   def index
@@ -9,13 +10,19 @@ class PostsController < ApplicationController
     @title = 'Публикации'
   end
 
-  def unpublished
-    if under_admin?
-      @posts = Post.unpublished.all
-    else
-      @posts = Post.unpublished.authored_by(current_user).all
-    end
-    @title = 'Мои черновики'
+  def drafts
+    @posts = Post.drafts
+    @posts = @posts.authored_by(current_user) unless under_admin?
+    @posts = @posts.all
+    @title = 'Черновики'
+    render :index
+  end
+
+  def pending
+    @posts = Post.pending
+    @posts = @posts.authored_by(current_user) unless under_admin?
+    @posts = @posts.all
+    @title = "Публикации в ожидании модерации"
     render :index
   end
 
@@ -31,7 +38,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    abort_if_non_authorized(@post)
+    abort_if_not_authorized(@post)
   end
 
   # POST /posts
@@ -39,8 +46,8 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.subscribers << current_user
     if params[:publish]
-      @post.published = true
-      notice = 'Публикация успешно размещена на сайте.'
+      @post.pending = true
+      notice = 'Публикация отправлена на модерацию.'
     else
       notice = 'Черновик публикации успешно сохранен.'
     end
@@ -55,15 +62,15 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1
   def update
-    abort_if_non_authorized(@post)
-    if params[:publish] && @post.published
-      notice = 'Публикация успешно обновлена.'
-    elsif params[:publish] && !@post.published
-      @post.published = true
-      notice = 'Публикация успешно размещена на сайте.'
-    elsif params[:draft] && @post.published
+    abort_if_not_authorized(@post)
+    if params[:publish]
+      @post.pending = true
       @post.published = false
-      notice = 'Публикация убрана с сайта и сохранена в черновиках.'
+      notice = 'Измененная публикация станет доступна другим пользователям после модерации.'
+    elsif params[:draft] && (@post.published || @post.pending)
+      @post.published = false
+      @post.pending = false
+      notice = 'Публикация сохранена в черновиках и не будет доступна другим пользователям.'
     else
       notice = 'Черновик публикации успешно обновлен.'
     end
@@ -75,15 +82,17 @@ class PostsController < ApplicationController
   end
 
   def publish
-    abort_if_non_authorized(@post)
-    @post.published = true
-    safe_save(@post, 'Публикация успешно размещена на сайте')
+    abort_if_not_authorized(@post)
+    @post.pending = true
+    @post.published = false
+    safe_save(@post, 'Публикация станет доступна другим пользователям после модерации.')
   end
 
   def unpublish
-    abort_if_non_authorized(@post)
+    abort_if_not_authorized(@post)
     @post.published = false
-    safe_save(@post, 'Публикация успешно убрана из открытого доступа и помещена в черновики.')
+    @post.pending = false
+    safe_save(@post, 'Публикация помещена в черновики и недоступна другим пользователям.')
   end
 
   def subscribe
@@ -96,11 +105,22 @@ class PostsController < ApplicationController
     safe_save(@post, 'Вы успешно отписались от комментариев к этой публикации')
   end
 
+  def approve
+    @post.published = true
+    @post.pending = false
+    safe_save(@post, 'Теперь публикация стала доступна пользователям.') { @post.approve_notify }
+  end
+
+  def discard
+    @post.pending = false
+    safe_save(@post, 'Публикация отклонена.') { @post.discard_notify }
+  end
+
   # DELETE /posts/1
   def destroy
-    abort_if_non_authorized(@post)
+    abort_if_not_authorized(@post)
     @post.destroy
-    redirect_to posts_url, notice: 'Публикация успешно удалена.'
+    redirect_to :back, notice: 'Публикация успешно удалена.'
   end
 
   private

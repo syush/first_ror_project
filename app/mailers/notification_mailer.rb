@@ -9,4 +9,23 @@ class NotificationMailer < ApplicationMailer
       mail(to: @receiver.email, subject: "Новый комментарий к публикации")
     end
   end
+
+  def approve_notification(post)
+    @post = post
+    @post_owner = post.user
+    @receiver = @post_owner
+    if @post_owner
+      mail(to: @receiver.email, subject: "Публикация одобрена модератором")
+    end
+  end
+
+  def discard_notification(post)
+    @post = post
+    @post_owner = post.user
+    @receiver = @post_owner
+    if @post_owner
+      mail(to: @receiver.email, subject: "Публикация отклонена модератором")
+    end
+  end
+
 end

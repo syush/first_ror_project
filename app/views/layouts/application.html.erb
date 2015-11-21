@@ -49,7 +49,10 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav navbar-left">
             <li><%= link_to "Публикации", posts_path  %></li>
-            <li><%= link_to "Черновики", unpublished_posts_path  %></li>
+            <% if current_user %>
+              <li><%= link_to "Черновики", drafts_posts_path  %></li>
+              <li><%= link_to "На модерации", pending_posts_path  %></li>
+            <% end %>
             <% if under_admin? %>
               <li><%= link_to "Страница администратора", admin_categories_path  %></li>
             <% end %>

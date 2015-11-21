@@ -46,7 +46,10 @@
         <a class="navbar-brand" href="/admin/categories">Наноблог - Страница администратора</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav navbar-left">
-            <li><%= link_to "Публикации", posts_path  %></li>
+            <li><%= link_to "Все публикации", posts_path  %></li>
+            <li><%= link_to "Все черновики", drafts_posts_path  %></li>
+            <li><%= link_to "Модерация", pending_posts_path  %></li>
+
             <li><%= link_to "Категории", admin_categories_path  %></li>
             <li><%= link_to "Пользователи", admin_users_path  %></li>
           </ul>

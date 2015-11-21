@@ -6,14 +6,16 @@ class ApplicationController < ActionController::Base
   helper_method :have_rights_for?, :under_admin?
 
 
-  def abort_if_non_authorized(object)
-    unless have_rights_for?(object)
-      redirect_to :root, alert: "У вас нет прав для выполнения этого действия"
-    end
+  def abort_if_not_authorized(object)
+    abort unless have_rights_for?(object)
   end
 
   def under_admin?
     current_user && current_user.admin?
+  end
+
+  def abort_if_not_admin!
+    abort unless under_admin?
   end
 
   def have_rights_for?(object)
@@ -24,6 +26,7 @@ class ApplicationController < ActionController::Base
 
   def safe_save(object, notice)
     if object.save
+      yield if block_given?
       redirect_to :back, notice: notice
     else
       redirect_to :back, alert: 'Из-за неизвестной ошибки операция не была завершена'
@@ -36,5 +39,8 @@ class ApplicationController < ActionController::Base
     @categories = Category.all
   end
 
+  def abort
+    redirect_to :root, alert: "У вас нет прав для выполнения этого действия"
+  end
 
 end

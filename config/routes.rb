@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :posts do
-    get :unpublished, on: :collection
+    get :drafts, on: :collection
+    get :pending, on: :collection
     get :publish, on: :member
     get :unpublish, on: :member
     get :subscribe, on: :member
     get :unsubscribe, on: :member
+    get :approve, on: :member
+    get :discard, on: :member
     resources :comments, only: [:edit, :create, :update, :destroy], shallow: true
   end
 
