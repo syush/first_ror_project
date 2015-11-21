@@ -6,12 +6,12 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.published.all
+    @posts = Post.published.by_creation_desc.all
     @title = 'Публикации'
   end
 
   def drafts
-    @posts = Post.drafts
+    @posts = Post.drafts.by_creation_desc
     @posts = @posts.authored_by(current_user) unless under_admin?
     @posts = @posts.all
     @title = 'Черновики'
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def pending
-    @posts = Post.pending
+    @posts = Post.pending.by_creation_desc
     @posts = @posts.authored_by(current_user) unless under_admin?
     @posts = @posts.all
     @title = "Публикации в ожидании модерации"

@@ -10,7 +10,7 @@ class Post < ActiveRecord::Base
   has_many :subscribers_posts
   has_many :subscribers, through: :subscribers_posts, source: :user
 
-  scope :particular_order, -> (order) {order(created_at: order)}
+  scope :by_creation_desc, -> {order(created_at: 'desc')}
   scope :published, -> {where(published: true)}
   scope :unpublished, -> {where(published: false)}
   scope :drafts, -> {where(published: false, pending:false)}
