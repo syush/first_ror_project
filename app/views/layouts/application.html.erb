@@ -49,6 +49,7 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav navbar-left">
             <li><%= link_to "Публикации", posts_path  %></li>
+            <li><%= link_to "Черновики", unpublished_posts_path  %></li>
             <% if under_admin? %>
               <li><%= link_to "Страница администратора", admin_categories_path  %></li>
             <% end %>
@@ -75,7 +76,7 @@
         <div class="col-lg-3">
           <div class="well sidebar-nav">
             <ul class="nav nav-pills">
-              <li class="nav-header">Публикации по категориям</li>
+              <li class="nav-header">По категориям</li>
               <% @categories.each do |category| %>
                 <p class="row"><li><%= link_to category.title, category %></li></p>
               <% end %>

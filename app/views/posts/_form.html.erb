@@ -13,7 +13,14 @@
     <strong>Категории:</strong>
     <p><%= f.collection_select :category_ids, @categories, :id, :title, {}, {multiple:true}%></p>
   </div>
+  <% if !@post.published %>
+    <p>Пока это только черновик. Чтобы разместить публикацию на сайте, нажмите кнопку "Опубликовать".</p>
+  <% else %>
+    <p>Эта публикация размещена на сайте. Вы можете переместить ее в черновики либо опубликовать обновленный вариант.</p>
+  <% end %>
   <div class="actions">
-    <%= f.submit "Опубликовать" %>
+    <%= f.submit "Поместить в черновики", name: :draft %>
+    <%= f.submit "Опубликовать", name: :publish %>
   </div>
+  <p></p>
 <% end %>

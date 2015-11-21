@@ -1,10 +1,21 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :publish, :unpublish]
 
   # GET /posts
   def index
-    @posts = Post.all
+    @posts = Post.published.all
+    @title = 'Публикации'
+  end
+
+  def unpublished
+    if under_admin?
+      @posts = Post.unpublished.all
+    else
+      @posts = Post.unpublished.authored_by(current_user).all
+    end
+    @title = 'Мои черновики'
+    render :index
   end
 
   # GET /posts/1
@@ -25,9 +36,15 @@ class PostsController < ApplicationController
   # POST /posts
   def create
     @post = Post.new(post_params)
+    if params[:publish]
+      @post.published = true
+      notice = 'Публикация успешно размещена на сайте.'
+    else
+      notice = 'Черновик публикации успешно сохранен.'
+    end
     @post.user = current_user
     if @post.save
-      redirect_to @post, notice: 'Публикация успешно создана.'
+      redirect_to @post, notice:notice
     else
       flash.now[:alert] = 'Заголовок и тело публикации не должны быть пустыми'
       render :new
@@ -37,10 +54,41 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   def update
     abort_if_non_authorized(@post)
+    if params[:publish] && @post.published
+      notice = 'Публикация успешно обновлена.'
+    elsif params[:publish] && !@post.published
+      @post.published = true
+      notice = 'Публикация успешно размещена на сайте.'
+    elsif params[:draft] && @post.published
+      @post.published = false
+      notice = 'Публикация убрана с сайта и сохранена в черновиках.'
+    else
+      notice = 'Черновик публикации успешно обновлен.'
+    end
     if @post.update(post_params)
-      redirect_to @post, notice: 'Публикация успешно обновлена.'
+      redirect_to @post, notice: notice
     else
       render :edit
+    end
+  end
+
+  def publish
+    abort_if_non_authorized(@post)
+    @post.published = true
+    if @post.save
+      redirect_to :back, notice: 'Публикация успешно размещена на сайте'
+    else
+      redirect_to :back, alert: 'Из-за неизвестной ошибки операция не была завершена'
+    end
+  end
+
+  def unpublish
+    abort_if_non_authorized(@post)
+    @post.published = false
+    if @post.save
+      redirect_to :back, notice: 'Публикация успешно убрана из открытого доступа и помещена в черновики'
+    else
+      redirect_to :back, alert: 'Из-за неизвестной ошибки операция не была завершена'
     end
   end
 
@@ -59,6 +107,6 @@ class PostsController < ApplicationController
 
    # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:title, :body, :category_ids => [])
+    params.require(:post).permit(:title, :body, :publish, :draft, :category_ids => [])
   end
 end

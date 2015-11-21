@@ -1,6 +1,7 @@
 <h2 class="post_title"><%= @post.title %></h2>
 <p class="post_categories"><%= render 'category_list', post:@post %></p>
 <p class="post_author"><%= render 'author', post:@post %></p>
+<p><%= render 'posts/if_draft', post:@post %></p>
 <p class="field_navigation"></p>
 <% @post.body.split("\n").each do |paragraph| %>
   <p class="post_body"><%= paragraph %></p>
@@ -16,9 +17,6 @@
 <%= render 'comments/form' %>
 <hr>
 <p class="links">
-  <% if have_rights_for?(@post) %>
-    <%= link_to 'Редактировать публикацию', edit_post_path(@post) %> |
-    <%= link_to "Удалить публикацию", @post, method: :delete, data:{confirm:"Вы уверены, что хотите удалить публикацию?"}%> |
-  <% end %>
+  <%= render 'posts/private_links', post: @post %>
   <%= link_to 'Список всех публикаций', posts_path %>
 </p>

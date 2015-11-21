@@ -1,0 +1,8 @@
+<p>Здравствуйте, <%= @post_owner.email %>,</p>
+<p>Пользователь <%= @comment_owner.email %> прокомментировал вашу публикацию "<%= link_to @post.title, @post %>".</p>
+<p>
+  Текст комментария: "<%=@comment.body.truncate(100)%>
+  <%="..." if @comment.body.truncate(100).length>97 %>"
+</p>
+<p>Все посты Наноблога вы можете посмотреть <%= link_to "здесь", posts_url %>.</p>
+<p>Ваш Наноблог.</p>
