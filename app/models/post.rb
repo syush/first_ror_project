@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
   has_many :categories, through: :categories_posts
   has_many :tags_posts
   has_many :tags, through: :tags_posts
+  has_many :subscribers_posts
+  has_many :subscribers, through: :subscribers_posts, source: :user
 
   scope :particular_order, -> (order) {order(created_at: order)}
   scope :published, -> {where(published: true)}

@@ -5,13 +5,12 @@ Rails.application.routes.draw do
 
   resources :posts do
     get :unpublished, on: :collection
-    get :unpublish, on: :member
     get :publish, on: :member
+    get :unpublish, on: :member
+    get :subscribe, on: :member
+    get :unsubscribe, on: :member
     resources :comments, only: [:edit, :create, :update, :destroy], shallow: true
   end
-
-  #get 'posts/:id/publish' => 'posts#publish', as: :publish_post
-  #get 'posts/:id/unpublish' => 'posts#unpublish', as: :unpublish_post
 
   resources :categories, only: [:show]
 

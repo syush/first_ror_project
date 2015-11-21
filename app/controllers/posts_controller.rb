@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :publish, :unpublish]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :publish,
+                                  :unpublish, :subscribe, :unsubscribe]
 
   # GET /posts
   def index
@@ -36,6 +37,7 @@ class PostsController < ApplicationController
   # POST /posts
   def create
     @post = Post.new(post_params)
+    @post.subscribers << current_user
     if params[:publish]
       @post.published = true
       notice = 'Публикация успешно размещена на сайте.'
@@ -75,21 +77,23 @@ class PostsController < ApplicationController
   def publish
     abort_if_non_authorized(@post)
     @post.published = true
-    if @post.save
-      redirect_to :back, notice: 'Публикация успешно размещена на сайте'
-    else
-      redirect_to :back, alert: 'Из-за неизвестной ошибки операция не была завершена'
-    end
+    safe_save(@post, 'Публикация успешно размещена на сайте')
   end
 
   def unpublish
     abort_if_non_authorized(@post)
     @post.published = false
-    if @post.save
-      redirect_to :back, notice: 'Публикация успешно убрана из открытого доступа и помещена в черновики'
-    else
-      redirect_to :back, alert: 'Из-за неизвестной ошибки операция не была завершена'
-    end
+    safe_save(@post, 'Публикация успешно убрана из открытого доступа и помещена в черновики.')
+  end
+
+  def subscribe
+    @post.subscribers << current_user unless @post.subscribers.include?(current_user)
+    safe_save(@post, 'Вы успешно подписаны на комментарии к этой публикации.')
+  end
+
+  def unsubscribe
+    @post.subscribers.delete(current_user)
+    safe_save(@post, 'Вы успешно отписались от комментариев к этой публикации')
   end
 
   # DELETE /posts/1
@@ -109,4 +113,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :body, :publish, :draft, :category_ids => [])
   end
+
 end

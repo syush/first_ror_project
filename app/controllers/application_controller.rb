@@ -20,6 +20,16 @@ class ApplicationController < ActionController::Base
     object && current_user && (current_user.author_of?(object) || current_user.admin?)
   end
 
+  protected
+
+  def safe_save(object, notice)
+    if object.save
+      redirect_to :back, notice: notice
+    else
+      redirect_to :back, alert: 'Из-за неизвестной ошибки операция не была завершена'
+    end
+  end
+
   private
 
   def set_categories

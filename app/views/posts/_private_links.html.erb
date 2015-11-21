@@ -9,3 +9,10 @@
                     data:{confirm:"Вы уверены, что хотите сделать публикацию доступной для всех?"} %>&nbsp&nbsp
     <% end %>
 <% end %>
+<% if current_user %>
+   <% if post.subscribers.include?(current_user) %>
+      <%= link_to 'Отписаться', unsubscribe_post_path(post) %>&nbsp&nbsp
+   <% else %>
+      <%= link_to 'Подписаться', subscribe_post_path(post) %>&nbsp&nbsp
+   <% end %>
+<% end %>
