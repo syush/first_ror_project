@@ -2,21 +2,21 @@
     <%= link_to 'Редактировать', edit_post_path(post) %>&nbsp&nbsp
     <%= link_to "Удалить", post, method: :delete,
         data:{confirm:"Вы уверены, что хотите удалить публикацию \"#{post.title}\"?"}%>&nbsp&nbsp
-    <% if post.published || (post.pending && !under_admin?)%>
+    <% if post.published? || (post.pending? && !under_admin?)%>
         <%= link_to 'Убрать в черновики', unpublish_post_path(post),
             data:{confirm:"Вы уверены, что хотите убрать публикацию с сайта и поместить в черновики?"} %>&nbsp&nbsp
-    <% elsif post.pending %>
+    <% elsif post.pending? %>
         <%= link_to 'Одобрить', approve_post_path(post),
             data:{confirm: "Вы уверены, что хотите разместить на сайте публикацию \"#{post.title}\"?"}%>&nbsp&nbsp
         <%= link_to 'Отклонить', discard_post_path(post),
             data:{confirm: "Вы уверены, что хотите отклонить публикацию \"#{post.title}\"?"} %>&nbsp&nbsp
     <% else %>
-        <%= link_to 'Опубликовать', publish_post_path(post),
+        <%= link_to 'Опубликовать', send_for_moderation_post_path(post),
             data:{confirm:"Вы уверены, что хотите сделать публикацию \"#{post.title}\" доступной для всех?"} %>&nbsp&nbsp
     <% end %>
 <% end %>
-<% if current_user && post.published %>
-    <% if post.subscribers.include?(current_user) %>
+<% if current_user && post.published? %>
+    <% if (current_user.subscribed_on?(post)) %>
        <%= link_to 'Отписаться', unsubscribe_post_path(post) %>&nbsp&nbsp
     <% else %>
        <%= link_to 'Подписаться', subscribe_post_path(post) %>&nbsp&nbsp

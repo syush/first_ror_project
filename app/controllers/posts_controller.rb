@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :publish,
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :send_for_moderation,
                                   :unpublish, :subscribe, :unsubscribe, :approve, :discard]
   before_action :abort_if_not_admin!, only:[:discard, :approve]
 
@@ -45,8 +45,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.subscribers << current_user
-    if params[:publish]
-      @post.pending = true
+    if params[:send_for_moderation]
+      @post.set_pending
       notice = 'Публикация отправлена на модерацию.'
     else
       notice = 'Черновик публикации успешно сохранен.'
@@ -63,13 +63,11 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   def update
     abort_if_not_authorized(@post)
-    if params[:publish]
-      @post.pending = true
-      @post.published = false
+    if params[:send_for_moderation]
+      @post.set_pending
       notice = 'Измененная публикация станет доступна другим пользователям после модерации.'
-    elsif params[:draft] && (@post.published || @post.pending)
-      @post.published = false
-      @post.pending = false
+    elsif params[:unpublish] && !@post.draft?
+      @post.set_draft
       notice = 'Публикация сохранена в черновиках и не будет доступна другим пользователям.'
     else
       notice = 'Черновик публикации успешно обновлен.'
@@ -81,38 +79,35 @@ class PostsController < ApplicationController
     end
   end
 
-  def publish
+  def send_for_moderation
     abort_if_not_authorized(@post)
-    @post.pending = true
-    @post.published = false
+    @post.set_pending
     safe_save(@post, 'Публикация станет доступна другим пользователям после модерации.')
   end
 
   def unpublish
     abort_if_not_authorized(@post)
-    @post.published = false
-    @post.pending = false
+    @post.set_draft
     safe_save(@post, 'Публикация помещена в черновики и недоступна другим пользователям.')
   end
 
   def subscribe
-    @post.subscribers << current_user unless @post.subscribers.include?(current_user)
+    current_user.subscribe_to(@post)
     safe_save(@post, 'Вы успешно подписаны на комментарии к этой публикации.')
   end
 
   def unsubscribe
-    @post.subscribers.delete(current_user)
+    current_user.unsubscribe_from(@post)
     safe_save(@post, 'Вы успешно отписались от комментариев к этой публикации')
   end
 
   def approve
-    @post.published = true
-    @post.pending = false
+    @post.publish
     safe_save(@post, 'Теперь публикация стала доступна пользователям.') { @post.approve_notify }
   end
 
   def discard
-    @post.pending = false
+    @post.set_draft
     safe_save(@post, 'Публикация отклонена.') { @post.discard_notify }
   end
 

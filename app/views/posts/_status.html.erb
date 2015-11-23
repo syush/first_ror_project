@@ -1,5 +1,5 @@
-<% if post.pending %>
+<% if post.pending? %>
   [На модерации]
-<% elsif !post.published %>
+<% elsif post.draft? %>
   [Черновик]
 <% end %>

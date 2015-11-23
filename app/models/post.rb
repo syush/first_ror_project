@@ -25,4 +25,23 @@ class Post < ActiveRecord::Base
     NotificationMailer.discard_notification(self).deliver_now
   end
 
+  def draft?
+    !self.pending && !self.published
+  end
+
+  def set_draft
+    self.pending = false
+    self.published = false
+  end
+
+  def set_pending
+    self.pending = true
+    self.published =false
+  end
+
+  def publish
+    self.published = true
+    self.pending = false
+  end
+
 end

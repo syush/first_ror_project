@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :posts do
     get :drafts, on: :collection
     get :pending, on: :collection
-    get :publish, on: :member
+    get :send_for_moderation, on: :member
     get :unpublish, on: :member
     get :subscribe, on: :member
     get :unsubscribe, on: :member

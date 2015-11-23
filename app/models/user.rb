@@ -12,4 +12,16 @@ class User < ActiveRecord::Base
   def author_of?(object)
     id == object.user_id
   end
+
+  def subscribe_to(post)
+    self.subscriptions << post unless self.subscriptions.include?(post)
+  end
+
+  def unsubscribe_from(post)
+    self.subscriptions.delete(post)
+  end
+
+  def subscribed_on?(post)
+    self.subscriptions.include?(post)
+  end
 end
