@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :set_categories
   helper_method :have_rights_for?, :under_admin?
 
+  protected
 
   def abort_if_not_authorized(object)
     abort unless have_rights_for?(object)
@@ -21,8 +22,6 @@ class ApplicationController < ActionController::Base
   def have_rights_for?(object)
     object && current_user && (current_user.author_of?(object) || current_user.admin?)
   end
-
-  protected
 
   def safe_save(object, notice)
     if object.save
