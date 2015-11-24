@@ -1,8 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy, :send_for_moderation,
-                                  :unpublish, :subscribe, :unsubscribe, :approve, :discard]
-  before_action :abort_if_not_admin!, only:[:discard, :approve]
+                                  :unpublish, :subscribe, :unsubscribe]
 
   # GET /posts
   def index
@@ -101,17 +100,7 @@ class PostsController < ApplicationController
     safe_save(@post, 'Вы успешно отписались от комментариев к этой публикации')
   end
 
-  def approve
-    @post.publish
-    safe_save(@post, 'Теперь публикация стала доступна пользователям.') { @post.approve_notify }
-  end
-
-  def discard
-    @post.set_draft
-    safe_save(@post, 'Публикация отклонена.') { @post.discard_notify }
-  end
-
-  # DELETE /posts/1
+   # DELETE /posts/1
   def destroy
     abort_if_not_authorized(@post)
     @post.destroy
@@ -120,9 +109,7 @@ class PostsController < ApplicationController
 
   private
 
-  def set_post
-    @post = Post.find(params[:id])
-  end
+
 
    # Never trust parameters from the scary internet, only allow the white list through.
   def post_params

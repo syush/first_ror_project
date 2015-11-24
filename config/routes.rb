@@ -10,8 +10,6 @@ Rails.application.routes.draw do
     get :unpublish, on: :member
     get :subscribe, on: :member
     get :unsubscribe, on: :member
-    get :approve, on: :member
-    get :discard, on: :member
     resources :comments, only: [:edit, :create, :update, :destroy], shallow: true
   end
 
@@ -20,6 +18,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :categories, except: [:show]
     resources :users, only: [:index, :destroy]
+    resources :posts, only: [] do
+      get :approve, on: :member
+      get :discard, on: :member
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

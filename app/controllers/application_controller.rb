@@ -15,10 +15,6 @@ class ApplicationController < ActionController::Base
     current_user && current_user.admin?
   end
 
-  def abort_if_not_admin!
-    abort unless under_admin?
-  end
-
   def have_rights_for?(object)
     object && current_user && (current_user.author_of?(object) || current_user.admin?)
   end
@@ -32,11 +28,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
   private
 
   def set_categories
     @categories = Category.all
   end
+
 
   def abort
     redirect_to :root, alert: "У вас нет прав для выполнения этого действия"

@@ -6,9 +6,9 @@
         <%= link_to 'Убрать в черновики', unpublish_post_path(post),
             data:{confirm:"Вы уверены, что хотите убрать публикацию с сайта и поместить в черновики?"} %>&nbsp&nbsp
     <% elsif post.pending? %>
-        <%= link_to 'Одобрить', approve_post_path(post),
+        <%= link_to 'Одобрить', approve_admin_post_path(post),
             data:{confirm: "Вы уверены, что хотите разместить на сайте публикацию \"#{post.title}\"?"}%>&nbsp&nbsp
-        <%= link_to 'Отклонить', discard_post_path(post),
+        <%= link_to 'Отклонить', discard_admin_post_path(post),
             data:{confirm: "Вы уверены, что хотите отклонить публикацию \"#{post.title}\"?"} %>&nbsp&nbsp
     <% else %>
         <%= link_to 'Опубликовать', send_for_moderation_post_path(post),
