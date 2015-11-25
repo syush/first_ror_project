@@ -2,9 +2,9 @@
 
   <p class="comment_author col-md-3">
     <% if current_user == comment.user %>
-        Вы написали:
+        <%= t('.you_wrote') %>:
     <% else %>
-        <%= comment.user ? comment.user.email : "Неизвестный пользователь" %> написал(а):
+        <%= comment.user ? comment.user.email : t('.unknown_user') %> <%= t('.wrote') %>:
     <% end %>
   </p>
   <p class="comment_body col-md-6">
@@ -12,8 +12,8 @@
   </p>
   <p class="links col-md-3">
     <% if have_rights_for?(comment) %>
-      <%= link_to "Редактировать", edit_comment_path(comment) %> |
-      <%= link_to "Удалить", comment, method: :delete, data:{confirm:"Вы уверены, что хотите удалить комментарий?"}%>
+      <%= link_to t('.edit'), edit_comment_path(comment) %> |
+      <%= link_to t('.delete'), comment, method: :delete, data:{confirm: t('.confirm_delete')} %>
   <% end %>
   </p>
 </div>

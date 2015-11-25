@@ -15,7 +15,7 @@ class Admin::CategoriesController < Admin::BaseController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to admin_categories_path, notice: 'Категория создана успешно'
+      redirect_to admin_categories_path, notice: t('.notice')
     else
       render :new
     end
@@ -23,7 +23,7 @@ class Admin::CategoriesController < Admin::BaseController
 
   def update
     if @category.update(category_params)
-      redirect_to admin_categories_path, notice: 'Название категории успешно изменено'
+      redirect_to admin_categories_path, notice: t('.notice')
     else
       render :edit
     end
@@ -31,7 +31,7 @@ class Admin::CategoriesController < Admin::BaseController
 
   def destroy
     @category.destroy
-    redirect_to admin_categories_path, notice: 'Категория успешно удалена'
+    redirect_to admin_categories_path, notice: t('.notice')
   end
 
   private

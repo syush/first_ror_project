@@ -1,14 +1,14 @@
-<h1 class="page_name">Управление категориями</h1>
+<h1 class="page_name"><%= t('.title') %></h1>
 <% @categories.each do |category| %>
     <p>
       <span class="big_list_items">
         <%= category.title %> |
       </span>
       <span class="links">
-        <%= link_to "Редактировать", edit_admin_category_path(category) %> |
-        <%= link_to "Удалить", [:admin, category], method: :delete,
-                    data:{confirm:"Вы уверены, что хотите удалить категорию \"#{category.title}\"?"}%>
+        <%= link_to t('.edit'), edit_admin_category_path(category) %> |
+        <%= link_to t('.delete'), [:admin, category], method: :delete,
+                    data:{confirm: t('.confirm_delete', title:category.title)}%>
       </span>
     </p>
 <% end %>
-<p class="links"><%= link_to "Создать новую категорию", new_admin_category_path %></p>
+<p class="links"><%= link_to t('.create_new'), new_admin_category_path %></p>

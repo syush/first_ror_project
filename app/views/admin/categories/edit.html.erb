@@ -1,5 +1,5 @@
-<h1 class="page_name">Изменение названия категории</h1>
+<h1 class="page_name"><%= t('.title') %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Отменить', admin_categories_path %>
+<%= link_to t(:cancel), admin_categories_path %>

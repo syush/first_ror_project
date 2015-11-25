@@ -1,5 +1,5 @@
-<h1 class="page_name">Редактирование комментария</h1>
+<h1 class="page_name"><%= t('.title') %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Вернуться к публикации', @comment.post %>
+<%= link_to t('.back_to_post'), @comment.post %>

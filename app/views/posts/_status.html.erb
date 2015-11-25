@@ -1,5 +1,5 @@
 <% if post.pending? %>
-  [На модерации]
+  [<%= t('.pending') %>]
 <% elsif post.draft? %>
-  [Черновик]
+  [<%= t('.draft') %>]
 <% end %>

@@ -8,7 +8,7 @@ class Admin::BaseController < ApplicationController
 
   def check_admin
     unless current_user && current_user.admin?
-      redirect_to root_path, alert:"У вас нет прав администратора, необходимых для выполнения этого действия."
+      redirect_to root_path, alert: t('admin.no_admin_error')
     end
   end
 end

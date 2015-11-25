@@ -54,7 +54,6 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice:notice
     else
-      flash.now[:alert] = 'Заголовок и тело публикации не должны быть пустыми'
       render :new
     end
   end

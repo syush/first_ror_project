@@ -1,24 +1,24 @@
 <% if have_rights_for?(post) %>
-    <%= link_to 'Редактировать', edit_post_path(post) %>&nbsp&nbsp
-    <%= link_to "Удалить", post, method: :delete,
-        data:{confirm:"Вы уверены, что хотите удалить публикацию \"#{post.title}\"?"}%>&nbsp&nbsp
+    <%= link_to t('.edit'), edit_post_path(post) %>&nbsp&nbsp
+    <%= link_to t('.delete'), post, method: :delete,
+        data:{confirm: t('.confirm_delete', title:post.title)}%>&nbsp&nbsp
     <% if post.published? || (post.pending? && !under_admin?)%>
-        <%= link_to 'Убрать в черновики', unpublish_post_path(post),
-            data:{confirm:"Вы уверены, что хотите убрать публикацию с сайта и поместить в черновики?"} %>&nbsp&nbsp
+        <%= link_to t('.unpublish'), unpublish_post_path(post),
+            data:{confirm: t('.confirm_unpublish')} %>&nbsp&nbsp
     <% elsif post.pending? %>
-        <%= link_to 'Одобрить', approve_admin_post_path(post),
-            data:{confirm: "Вы уверены, что хотите разместить на сайте публикацию \"#{post.title}\"?"}%>&nbsp&nbsp
-        <%= link_to 'Отклонить', discard_admin_post_path(post),
-            data:{confirm: "Вы уверены, что хотите отклонить публикацию \"#{post.title}\"?"} %>&nbsp&nbsp
+        <%= link_to t('.approve'), approve_admin_post_path(post),
+            data:{confirm: t('.confirm_approve', title:post.title)}%>&nbsp&nbsp
+        <%= link_to t('.discard'), discard_admin_post_path(post),
+            data:{confirm: t('.confirm_discard', title:post.title)} %>&nbsp&nbsp
     <% else %>
-        <%= link_to 'Опубликовать', send_for_moderation_post_path(post),
-            data:{confirm:"Вы уверены, что хотите сделать публикацию \"#{post.title}\" доступной для всех?"} %>&nbsp&nbsp
+        <%= link_to t('.publish'), send_for_moderation_post_path(post),
+            data:{confirm: t('.confirm_publish', title:post.title)} %>&nbsp&nbsp
     <% end %>
 <% end %>
 <% if current_user && post.published? %>
     <% if (current_user.subscribed_on?(post)) %>
-       <%= link_to 'Отписаться', unsubscribe_post_path(post) %>&nbsp&nbsp
+       <%= link_to t('.unsubscribe'), unsubscribe_post_path(post) %>&nbsp&nbsp
     <% else %>
-       <%= link_to 'Подписаться', subscribe_post_path(post) %>&nbsp&nbsp
+       <%= link_to t('.subscribe'), subscribe_post_path(post) %>&nbsp&nbsp
     <% end %>
 <% end %>

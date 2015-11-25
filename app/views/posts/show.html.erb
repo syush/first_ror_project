@@ -8,15 +8,15 @@
 <% end %>
 <hr>
 <% if @post.comments.any? %>
-  <h4 class="field_navigation">Комментарии:</h4>
+  <h4 class="field_navigation"><%= t('.comments') %>:</h4>
   <%= render @post.comments %>
-  <h4 class="field_navigation">Оставьте свой комментарий:</h4>
+  <h4 class="field_navigation"><%= t('.leave_comment') %>:</h4>
 <% else %>
-  <h4 class="field_navigation">К этой публикации пока нет комментариев. Поделитесь своим мнением.</h4>
+  <h4 class="field_navigation"><%= t('.no_comments') %></h4>
 <% end %>
 <%= render 'comments/form' %>
 <hr>
 <p class="links">
   <%= render 'posts/private_links', post: @post %>
-  <%= link_to 'Список всех публикаций', posts_path %>
+  <%= link_to t('.list_all'), posts_path %>
 </p>

@@ -1,5 +1,5 @@
-<h1 class="page_name">Публикации в категории "<%= @category.title %>"</h1>
+<h1 class="page_name"><%= t('.title', title:@category.title) %></h1>
 
 <%= render @posts %>
 
-<%= link_to 'Ко всем категориям', posts_path %>
+<%= link_to t('.all_posts'), posts_path %>

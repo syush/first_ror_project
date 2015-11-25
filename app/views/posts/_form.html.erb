@@ -2,27 +2,27 @@
   <%= render 'error/handle', :errors => @post.errors  %>
 
   <div class="field">
-    <strong>Заголовок публикации:</strong>
+    <strong><%= f.label :title %></strong>
     <p><%= f.text_field :title %></p>
   </div>
   <div class="field">
-    <strong>Текст публикации:</strong>
+    <strong><%= f.label :body %></strong>
     <p><%= f.text_area :body %></p>
   </div>
   <div class="field">
-    <strong>Категории:</strong>
+    <strong><%= f.label :categories %></strong>
     <p><%= f.collection_select :category_ids, @categories, :id, :title, {}, {multiple:true}%></p>
   </div>
   <% if !@post.published? %>
-    <p>Пока это только черновик. Чтобы разместить публикацию на сайте, нажмите кнопку "Опубликовать".
-    После модерации она станет доступна всем пользователям сайта.</p>
+    <p><%= t('.draft_instruction') %></p>
+    <p><%= t('.draft_warning') %></p>
   <% else %>
-    <p>Эта публикация размещена на сайте. Вы можете переместить ее в черновики либо опубликовать обновленный вариант. </p>
-    <p>Внимание! В случае обновления публикации она будет убрана с сайта и снова станет доступна всем пользователям только после модерации.</p>
+    <p><%= t('.published_instruction') %></p>
+    <p><%= t('.published_warning') %></p>
   <% end %>
   <div class="actions">
-    <%= f.submit "Поместить в черновики", name: :unpublish %>
-    <%= f.submit "Опубликовать", name: :send_for_moderation %>
+    <%= f.submit t('.submit_draft'), name: :unpublish %>
+    <%= f.submit t('.submit_publish'), name: :send_for_moderation %>
   </div>
   <p></p>
 <% end %>
