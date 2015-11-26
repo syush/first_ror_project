@@ -6,14 +6,14 @@ class PostsController < ApplicationController
   # GET /posts
   def index
     @posts = Post.published.by_creation_desc.all
-    @title = 'Публикации'
+    @title = t('.title')
   end
 
   def drafts
     @posts = Post.drafts.by_creation_desc
     @posts = @posts.authored_by(current_user) unless under_admin?
     @posts = @posts.all
-    @title = 'Черновики'
+    @title = t('.title')
     render :index
   end
 
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @posts = Post.pending.by_creation_desc
     @posts = @posts.authored_by(current_user) unless under_admin?
     @posts = @posts.all
-    @title = "Публикации в ожидании модерации"
+    @title = t('.title')
     render :index
   end
 
@@ -46,9 +46,9 @@ class PostsController < ApplicationController
     @post.subscribers << current_user
     if params[:send_for_moderation]
       @post.set_pending
-      notice = 'Публикация отправлена на модерацию.'
+      notice = t('.notice_pending')
     else
-      notice = 'Черновик публикации успешно сохранен.'
+      notice = t('.notice_draft')
     end
     @post.user = current_user
     if @post.save
@@ -63,12 +63,12 @@ class PostsController < ApplicationController
     abort_if_not_authorized(@post)
     if params[:send_for_moderation]
       @post.set_pending
-      notice = 'Измененная публикация станет доступна другим пользователям после модерации.'
+      notice = t('.notice_pending')
     elsif params[:unpublish] && !@post.draft?
       @post.set_draft
-      notice = 'Публикация сохранена в черновиках и не будет доступна другим пользователям.'
+      notice = t('.notice_draft')
     else
-      notice = 'Черновик публикации успешно обновлен.'
+      notice = t('.notice_draft_update')
     end
     if @post.update(post_params)
       redirect_to @post, notice: notice
@@ -80,30 +80,30 @@ class PostsController < ApplicationController
   def send_for_moderation
     abort_if_not_authorized(@post)
     @post.set_pending
-    safe_save(@post, 'Публикация станет доступна другим пользователям после модерации.')
+    safe_save(@post, t('.notice'))
   end
 
   def unpublish
     abort_if_not_authorized(@post)
     @post.set_draft
-    safe_save(@post, 'Публикация помещена в черновики и недоступна другим пользователям.')
+    safe_save(@post, t('.notice'))
   end
 
   def subscribe
     current_user.subscribe_to(@post)
-    safe_save(@post, 'Вы успешно подписаны на комментарии к этой публикации.')
+    safe_save(@post, t('.notice'))
   end
 
   def unsubscribe
     current_user.unsubscribe_from(@post)
-    safe_save(@post, 'Вы успешно отписались от комментариев к этой публикации')
+    safe_save(@post, t('.notice'))
   end
 
    # DELETE /posts/1
   def destroy
     abort_if_not_authorized(@post)
     @post.destroy
-    redirect_to :back, notice: 'Публикация успешно удалена.'
+    redirect_to :back, notice: t('.notice')
   end
 
   private

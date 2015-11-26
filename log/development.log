@@ -35852,3 +35852,963 @@ Processing by PostsController#show as HTML
   Rendered posts/show.html.erb within layouts/application (34.6ms)
   [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories"
 Completed 200 OK in 295ms (Views: 289.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-26 16:21:38 +0300
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."published" = ?  ORDER BY "posts"."created_at" DESC[0m  [["published", "t"]]
+  [1m[35mCategory Exists (0.7ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 40]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 40]]
+  Rendered posts/_category_list.html.erb (18.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (11.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Exists (0.2ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 40]]
+  Rendered posts/_private_links.html.erb (16.5ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 38]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 38]]
+  Rendered posts/_category_list.html.erb (4.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (1.0ms)
+  Rendered posts/_status.html.erb (0.0ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 38]]
+  Rendered posts/_private_links.html.erb (1.8ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 32]]
+  [1m[35mCategory Load (0.0ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 32]]
+  Rendered posts/_category_list.html.erb (1.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (1.0ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 32]]
+  Rendered posts/_private_links.html.erb (1.8ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 30]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 30]]
+  Rendered posts/_category_list.html.erb (1.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 30]]
+  Rendered posts/_private_links.html.erb (1.3ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 29]]
+  [1m[35mCategory Load (0.0ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 29]]
+  Rendered posts/_category_list.html.erb (3.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.9ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.2ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 29]]
+  Rendered posts/_private_links.html.erb (1.9ms)
+  [1m[36mCategory Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 28]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 28]]
+  Rendered posts/_category_list.html.erb (1.8ms)
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.9ms)
+  Rendered posts/_status.html.erb (0.0ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 28]]
+  Rendered posts/_private_links.html.erb (1.6ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 27]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 27]]
+  Rendered posts/_category_list.html.erb (2.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 27]]
+  Rendered posts/_private_links.html.erb (1.6ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 26]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 26]]
+  Rendered posts/_category_list.html.erb (3.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.9ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 26]]
+  Rendered posts/_private_links.html.erb (1.7ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 25]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 25]]
+  Rendered posts/_category_list.html.erb (2.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.9ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 25]]
+  Rendered posts/_private_links.html.erb (1.7ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 21]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 21]]
+  Rendered posts/_category_list.html.erb (1.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.7ms)
+  Rendered posts/_status.html.erb (0.0ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 21]]
+  Rendered posts/_private_links.html.erb (1.5ms)
+  Rendered posts/_post.html.erb (128.2ms)
+  Rendered posts/index.html.erb within layouts/application (135.3ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 273ms (Views: 239.5ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2015-11-26 16:21:43 +0300
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."published" = ?  ORDER BY "posts"."created_at" DESC  [["published", "t"]]
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 40]]
+  [1m[35mCategory Load (0.4ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 40]]
+  Rendered posts/_category_list.html.erb (12.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (1.1ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 40]]
+  Rendered posts/_private_links.html.erb (10.6ms)
+  [1m[35mCategory Exists (0.8ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 38]]
+  [1m[36mCategory Load (1.8ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 38]]
+  Rendered posts/_category_list.html.erb (9.7ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (2.1ms)
+  Rendered posts/_status.html.erb (0.2ms)
+  [1m[36mPost Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 38]]
+  Rendered posts/_private_links.html.erb (7.4ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 32]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 32]]
+  Rendered posts/_category_list.html.erb (6.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (1.0ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 32]]
+  Rendered posts/_private_links.html.erb (3.4ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 30]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 30]]
+  Rendered posts/_category_list.html.erb (6.3ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered posts/_author.html.erb (2.9ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 30]]
+  Rendered posts/_private_links.html.erb (7.4ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 29]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 29]]
+  Rendered posts/_category_list.html.erb (2.8ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (1.7ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 29]]
+  Rendered posts/_private_links.html.erb (1.9ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 28]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 28]]
+  Rendered posts/_category_list.html.erb (5.8ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.7ms)
+  Rendered posts/_status.html.erb (0.0ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 28]]
+  Rendered posts/_private_links.html.erb (3.5ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 27]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 27]]
+  Rendered posts/_category_list.html.erb (6.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.0ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 27]]
+  Rendered posts/_private_links.html.erb (3.6ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 26]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 26]]
+  Rendered posts/_category_list.html.erb (7.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.9ms)
+  Rendered posts/_status.html.erb (0.0ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 26]]
+  Rendered posts/_private_links.html.erb (1.6ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 25]]
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 25]]
+  Rendered posts/_category_list.html.erb (5.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.0ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 25]]
+  Rendered posts/_private_links.html.erb (1.9ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 21]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 21]]
+  Rendered posts/_category_list.html.erb (4.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.9ms)
+  Rendered posts/_status.html.erb (0.2ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 21]]
+  Rendered posts/_private_links.html.erb (2.1ms)
+  Rendered posts/_post.html.erb (187.7ms)
+  Rendered posts/index.html.erb within layouts/application (193.6ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 325ms (Views: 317.2ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/posts/drafts" for 127.0.0.1 at 2015-11-26 16:22:26 +0300
+Processing by PostsController#drafts as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."published" = ? AND "posts"."pending" = ? AND "posts"."user_id" = ?  ORDER BY "posts"."created_at" DESC  [["published", "f"], ["pending", "f"], ["user_id", 1]]
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 36]]
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 36]]
+  Rendered posts/_category_list.html.erb (9.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (2.6ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  Rendered posts/_private_links.html.erb (0.6ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 23]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 23]]
+  Rendered posts/_category_list.html.erb (4.7ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.7ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  Rendered posts/_private_links.html.erb (0.5ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 20]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 20]]
+  Rendered posts/_category_list.html.erb (2.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.7ms)
+  Rendered posts/_status.html.erb (0.2ms)
+  Rendered posts/_private_links.html.erb (0.5ms)
+  Rendered posts/_post.html.erb (32.1ms)
+  Rendered posts/index.html.erb within layouts/application (40.0ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 220ms (Views: 161.7ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/posts/pending" for 127.0.0.1 at 2015-11-26 16:23:29 +0300
+Processing by PostsController#pending as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."pending" = ? AND "posts"."user_id" = ?  ORDER BY "posts"."created_at" DESC  [["pending", "t"], ["user_id", 1]]
+  [1m[36mCategory Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 39]]
+  [1m[35mCategory Load (0.4ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 39]]
+  Rendered posts/_category_list.html.erb (24.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (5.6ms)
+  Rendered posts/_status.html.erb (0.4ms)
+  Rendered posts/_private_links.html.erb (1.9ms)
+  Rendered posts/_post.html.erb (41.7ms)
+  Rendered posts/index.html.erb within layouts/application (53.8ms)
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 396ms (Views: 322.1ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/posts/39/edit" for 127.0.0.1 at 2015-11-26 16:33:33 +0300
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"39"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 39]]
+  Rendered error/_handle.html.erb (0.1ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT "categories".id FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 39]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".id FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 39]]
+  Rendered posts/_form.html.erb (34.9ms)
+  Rendered posts/edit.html.erb within layouts/application (56.2ms)
+Completed 200 OK in 252ms (Views: 221.5ms | ActiveRecord: 2.1ms)
+
+
+Started PATCH "/posts/39" for 127.0.0.1 at 2015-11-26 16:33:38 +0300
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zeG7Qzb3/MhhO3C7vpM9tPtNgeD12Q2/4jO14JY97BImHlD2gXp25Zz1DBe3sHf/lsi2dSsO1fqCgg14dIIK0A==", "post"=>{"title"=>"Penny Lane", "body"=>"Full of fish and finger pies in summer ", "category_ids"=>[""]}, "send_for_moderation"=>"Опубликовать", "id"=>"39"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 39]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 39]]
+  [1m[35mSQL (0.3ms)[0m  UPDATE "posts" SET "body" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["body", "Full of fish and finger pies in summer "], ["updated_at", "2015-11-26 13:33:38.407532"], ["id", 39]]
+  [1m[36m (22.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/posts/39
+Completed 302 Found in 41ms (ActiveRecord: 23.3ms)
+
+
+Started GET "/posts/39" for 127.0.0.1 at 2015-11-26 16:33:38 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"39"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 39]]
+  [1m[36mCategory Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 39]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 39]]
+  Rendered posts/_category_list.html.erb (8.2ms)
+  [1m[36mUser Load (5.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (7.9ms)
+  Rendered posts/_status.html.erb (0.2ms)
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = ? LIMIT 1  [["post_id", 39]]
+  Rendered error/_handle.html.erb (0.0ms)
+  Rendered comments/_form.html.erb (4.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_private_links.html.erb (7.6ms)
+  Rendered posts/show.html.erb within layouts/application (50.2ms)
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 366ms (Views: 349.2ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/posts/39/edit" for 127.0.0.1 at 2015-11-26 16:33:43 +0300
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"39"}
+  [1m[36mUser Load (2.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 39]]
+  Rendered error/_handle.html.erb (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT "categories".id FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 39]]
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".id FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 39]]
+  Rendered posts/_form.html.erb (13.1ms)
+  Rendered posts/edit.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 226ms (Views: 214.2ms | ActiveRecord: 2.5ms)
+
+
+Started PATCH "/posts/39" for 127.0.0.1 at 2015-11-26 16:33:46 +0300
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EOqZUJsOCaCiX0/Eq+OYg/dBa9w+NIqSKyNn3ylBf/z7FXLlLIODjV+RM2iiwNLImsRcSeDjUtdLkt9Hy/6ZPg==", "post"=>{"title"=>"Penny Lane", "body"=>"Full of fish and finger pies in summer ", "category_ids"=>[""]}, "unpublish"=>"Поместить в черновики", "id"=>"39"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 39]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 39]]
+  [1m[35mSQL (0.2ms)[0m  UPDATE "posts" SET "pending" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["pending", "f"], ["updated_at", "2015-11-26 13:33:46.049181"], ["id", 39]]
+  [1m[36m (33.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/posts/39
+Completed 302 Found in 50ms (ActiveRecord: 34.1ms)
+
+
+Started GET "/posts/39" for 127.0.0.1 at 2015-11-26 16:33:46 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"39"}
+  [1m[35mPost Load (3.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 39]]
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 39]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 39]]
+  Rendered posts/_category_list.html.erb (10.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.2ms)
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = ? LIMIT 1  [["post_id", 39]]
+  Rendered error/_handle.html.erb (0.0ms)
+  Rendered comments/_form.html.erb (3.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_private_links.html.erb (1.8ms)
+  Rendered posts/show.html.erb within layouts/application (28.7ms)
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 350ms (Views: 344.9ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2015-11-26 16:33:58 +0300
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."published" = ?  ORDER BY "posts"."created_at" DESC[0m  [["published", "t"]]
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 40]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 40]]
+  Rendered posts/_category_list.html.erb (1.9ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (2.3ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Exists (0.3ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 40]]
+  Rendered posts/_private_links.html.erb (11.3ms)
+  [1m[36mCategory Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 38]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 38]]
+  Rendered posts/_category_list.html.erb (4.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (1.0ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 38]]
+  Rendered posts/_private_links.html.erb (2.5ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 32]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 32]]
+  Rendered posts/_category_list.html.erb (17.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (3.0ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 32]]
+  Rendered posts/_private_links.html.erb (2.9ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 30]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 30]]
+  Rendered posts/_category_list.html.erb (5.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered posts/_author.html.erb (1.0ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 30]]
+  Rendered posts/_private_links.html.erb (1.5ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 29]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 29]]
+  Rendered posts/_category_list.html.erb (2.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 29]]
+  Rendered posts/_private_links.html.erb (3.5ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 28]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 28]]
+  Rendered posts/_category_list.html.erb (2.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.9ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 28]]
+  Rendered posts/_private_links.html.erb (2.1ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 27]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 27]]
+  Rendered posts/_category_list.html.erb (2.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.9ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 27]]
+  Rendered posts/_private_links.html.erb (2.1ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 26]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 26]]
+  Rendered posts/_category_list.html.erb (2.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 26]]
+  Rendered posts/_private_links.html.erb (2.0ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 25]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 25]]
+  Rendered posts/_category_list.html.erb (3.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.9ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 25]]
+  Rendered posts/_private_links.html.erb (1.9ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 21]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 21]]
+  Rendered posts/_category_list.html.erb (2.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (2.5ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 21]]
+  Rendered posts/_private_links.html.erb (2.1ms)
+  Rendered posts/_post.html.erb (130.0ms)
+  Rendered posts/index.html.erb within layouts/application (132.2ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 290ms (Views: 284.7ms | ActiveRecord: 4.2ms)
+
+
+Started DELETE "/posts/32" for 127.0.0.1 at 2015-11-26 16:34:04 +0300
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"0NMAplwEUrUBdxoxXeV5Pn+aRQuMukcc+LbAR2DAxTw7LOsT64nYmPy5Zp1UxjN1Eh9ynlJtn1mYB3jfgn8j/g==", "id"=>"32"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 32]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 32]]
+  [1m[35m (57.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 69ms (ActiveRecord: 58.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2015-11-26 16:34:04 +0300
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."published" = ?  ORDER BY "posts"."created_at" DESC[0m  [["published", "t"]]
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 40]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 40]]
+  Rendered posts/_category_list.html.erb (2.2ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (3.2ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Exists (1.7ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 40]]
+  Rendered posts/_private_links.html.erb (11.0ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 38]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 38]]
+  Rendered posts/_category_list.html.erb (6.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (3.4ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 38]]
+  Rendered posts/_private_links.html.erb (5.1ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 30]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 30]]
+  Rendered posts/_category_list.html.erb (14.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered posts/_author.html.erb (3.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 30]]
+  Rendered posts/_private_links.html.erb (4.1ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 29]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 29]]
+  Rendered posts/_category_list.html.erb (3.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (4.6ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 29]]
+  Rendered posts/_private_links.html.erb (5.9ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 28]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 28]]
+  Rendered posts/_category_list.html.erb (7.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (3.9ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 28]]
+  Rendered posts/_private_links.html.erb (4.2ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 27]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 27]]
+  Rendered posts/_category_list.html.erb (9.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.9ms)
+  Rendered posts/_status.html.erb (0.7ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 27]]
+  Rendered posts/_private_links.html.erb (9.8ms)
+  [1m[36mCategory Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 26]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 26]]
+  Rendered posts/_category_list.html.erb (5.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (2.8ms)
+  Rendered posts/_status.html.erb (0.2ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 26]]
+  Rendered posts/_private_links.html.erb (19.0ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 25]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 25]]
+  Rendered posts/_category_list.html.erb (8.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (4.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 25]]
+  Rendered posts/_private_links.html.erb (5.4ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 21]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 21]]
+  Rendered posts/_category_list.html.erb (6.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (3.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 21]]
+  Rendered posts/_private_links.html.erb (8.6ms)
+  Rendered posts/_post.html.erb (249.3ms)
+  Rendered posts/index.html.erb within layouts/application (251.5ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 776ms (Views: 766.0ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/posts/29/subscribe" for 127.0.0.1 at 2015-11-26 16:34:10 +0300
+Processing by PostsController#subscribe as HTML
+  Parameters: {"id"=>"29"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 29]]
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 29]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "subscribers_posts" ("user_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 1], ["post_id", 29], ["created_at", "2015-11-26 13:34:10.846193"], ["updated_at", "2015-11-26 13:34:10.846193"]]
+  [1m[36m (18.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 33ms (ActiveRecord: 19.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2015-11-26 16:34:10 +0300
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."published" = ?  ORDER BY "posts"."created_at" DESC  [["published", "t"]]
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 40]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 40]]
+  Rendered posts/_category_list.html.erb (2.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (1.1ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPost Exists (1.3ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 40]]
+  Rendered posts/_private_links.html.erb (4.3ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 38]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 38]]
+  Rendered posts/_category_list.html.erb (2.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (1.0ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 38]]
+  Rendered posts/_private_links.html.erb (2.2ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 30]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 30]]
+  Rendered posts/_category_list.html.erb (3.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 30]]
+  Rendered posts/_private_links.html.erb (1.3ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 29]]
+  [1m[36mCategory Load (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 29]]
+  Rendered posts/_category_list.html.erb (1.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (1.0ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 29]]
+  Rendered posts/_private_links.html.erb (1.9ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 28]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 28]]
+  Rendered posts/_category_list.html.erb (3.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.7ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 28]]
+  Rendered posts/_private_links.html.erb (1.8ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 27]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 27]]
+  Rendered posts/_category_list.html.erb (2.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.9ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 27]]
+  Rendered posts/_private_links.html.erb (1.6ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 26]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 26]]
+  Rendered posts/_category_list.html.erb (2.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.9ms)
+  Rendered posts/_status.html.erb (0.2ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 26]]
+  Rendered posts/_private_links.html.erb (2.3ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 25]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 25]]
+  Rendered posts/_category_list.html.erb (2.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.7ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 25]]
+  Rendered posts/_private_links.html.erb (3.5ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 21]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 21]]
+  Rendered posts/_category_list.html.erb (2.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 21]]
+  Rendered posts/_private_links.html.erb (1.9ms)
+  Rendered posts/_post.html.erb (77.6ms)
+  Rendered posts/index.html.erb within layouts/application (80.6ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 215ms (Views: 210.4ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/posts/38/unsubscribe" for 127.0.0.1 at 2015-11-26 16:34:13 +0300
+Processing by PostsController#unsubscribe as HTML
+  Parameters: {"id"=>"38"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 38]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "subscribers_posts" WHERE "subscribers_posts"."user_id" = ? AND "subscribers_posts"."post_id" = 38  [["user_id", 1]]
+  [1m[36m (11.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 20ms (ActiveRecord: 11.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2015-11-26 16:34:13 +0300
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."published" = ?  ORDER BY "posts"."created_at" DESC  [["published", "t"]]
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 40]]
+  [1m[35mCategory Load (0.0ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 40]]
+  Rendered posts/_category_list.html.erb (1.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.9ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 40]]
+  Rendered posts/_private_links.html.erb (10.4ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 38]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 38]]
+  Rendered posts/_category_list.html.erb (9.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 38]]
+  Rendered posts/_private_links.html.erb (4.6ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 30]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 30]]
+  Rendered posts/_category_list.html.erb (7.5ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 30]]
+  Rendered posts/_private_links.html.erb (4.1ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 29]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 29]]
+  Rendered posts/_category_list.html.erb (2.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (3.0ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 29]]
+  Rendered posts/_private_links.html.erb (2.8ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 28]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 28]]
+  Rendered posts/_category_list.html.erb (2.3ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (1.0ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 28]]
+  Rendered posts/_private_links.html.erb (3.8ms)
+  [1m[35mCategory Exists (0.2ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 27]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 27]]
+  Rendered posts/_category_list.html.erb (2.3ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 27]]
+  Rendered posts/_private_links.html.erb (7.4ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 26]]
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 26]]
+  Rendered posts/_category_list.html.erb (5.3ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (3.2ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 26]]
+  Rendered posts/_private_links.html.erb (5.8ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 25]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 25]]
+  Rendered posts/_category_list.html.erb (6.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (1.9ms)
+  Rendered posts/_status.html.erb (0.3ms)
+  [1m[36mPost Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 25]]
+  Rendered posts/_private_links.html.erb (2.2ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 21]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 21]]
+  Rendered posts/_category_list.html.erb (7.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (2.9ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1[0m  [["user_id", 1], ["id", 21]]
+  Rendered posts/_private_links.html.erb (3.3ms)
+  Rendered posts/_post.html.erb (148.1ms)
+  Rendered posts/index.html.erb within layouts/application (149.8ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 313ms (Views: 308.1ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2015-11-26 16:34:23 +0300
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered error/_handle.html.erb (0.1ms)
+  [1m[35mCategory Load (3.1ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered posts/_form.html.erb (24.5ms)
+  Rendered posts/new.html.erb within layouts/application (37.4ms)
+Completed 200 OK in 334ms (Views: 318.5ms | ActiveRecord: 4.5ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2015-11-26 16:34:49 +0300
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ywzEGURhbg9QmmCRrWQzN1RCg9QEXJMeq4NakIRa6rUg8y+s8+zkIq1UHD2kR3l8Oce0QdqLS1vLMuIIZuUMdw==", "post"=>{"title"=>"Let it bleed", "body"=>"Speaking words of wisdom", "category_ids"=>[""]}, "unpublish"=>"Поместить в черновики"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (2.6ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Let it bleed"], ["body", "Speaking words of wisdom"], ["user_id", 1], ["created_at", "2015-11-26 13:34:49.624394"], ["updated_at", "2015-11-26 13:34:49.624394"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "subscribers_posts" ("user_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 1], ["post_id", 41], ["created_at", "2015-11-26 13:34:49.629276"], ["updated_at", "2015-11-26 13:34:49.629276"]]
+  [1m[36m (21.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/posts/41
+Completed 302 Found in 54ms (ActiveRecord: 24.0ms)
+
+
+Started GET "/posts/41" for 127.0.0.1 at 2015-11-26 16:34:49 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"41"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 41]]
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 41]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 41]]
+  Rendered posts/_category_list.html.erb (4.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (2.1ms)
+  Rendered posts/_status.html.erb (0.2ms)
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = ? LIMIT 1  [["post_id", 41]]
+  Rendered error/_handle.html.erb (0.0ms)
+  Rendered comments/_form.html.erb (5.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_private_links.html.erb (13.5ms)
+  Rendered posts/show.html.erb within layouts/application (37.3ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 450ms (Views: 444.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-26 16:34:55 +0300
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."published" = ?  ORDER BY "posts"."created_at" DESC[0m  [["published", "t"]]
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 40]]
+  [1m[36mCategory Load (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 40]]
+  Rendered posts/_category_list.html.erb (1.9ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (1.0ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 40]]
+  Rendered posts/_private_links.html.erb (3.0ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 38]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 38]]
+  Rendered posts/_category_list.html.erb (1.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.6ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 38]]
+  Rendered posts/_private_links.html.erb (1.6ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 30]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 30]]
+  Rendered posts/_category_list.html.erb (3.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered posts/_author.html.erb (0.9ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 30]]
+  Rendered posts/_private_links.html.erb (1.2ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 29]]
+  [1m[35mCategory Load (0.0ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 29]]
+  Rendered posts/_category_list.html.erb (1.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.6ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 29]]
+  Rendered posts/_private_links.html.erb (2.4ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 28]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 28]]
+  Rendered posts/_category_list.html.erb (1.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.7ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 28]]
+  Rendered posts/_private_links.html.erb (1.6ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 27]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 27]]
+  Rendered posts/_category_list.html.erb (2.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (1.1ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 27]]
+  Rendered posts/_private_links.html.erb (1.6ms)
+  [1m[36mCategory Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 26]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 26]]
+  Rendered posts/_category_list.html.erb (5.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 26]]
+  Rendered posts/_private_links.html.erb (1.8ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 25]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 25]]
+  Rendered posts/_category_list.html.erb (2.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (1.9ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 25]]
+  Rendered posts/_private_links.html.erb (2.0ms)
+  [1m[36mCategory Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 21]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 21]]
+  Rendered posts/_category_list.html.erb (2.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "subscribers_posts" ON "posts"."id" = "subscribers_posts"."post_id" WHERE "subscribers_posts"."user_id" = ? AND "posts"."id" = ? LIMIT 1  [["user_id", 1], ["id", 21]]
+  Rendered posts/_private_links.html.erb (1.7ms)
+  Rendered posts/_post.html.erb (77.4ms)
+  Rendered posts/index.html.erb within layouts/application (79.1ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 210ms (Views: 206.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2015-11-26 16:34:59 +0300
+Processing by PostsController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered error/_handle.html.erb (0.0ms)
+  [1m[36mCategory Load (1.4ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered posts/_form.html.erb (6.9ms)
+  Rendered posts/new.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 128ms (Views: 124.7ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2015-11-26 16:35:05 +0300
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OHV9nNtrFZVYm0wGdNkvxvwGcrrbsU7rn0npZ/F2ypzTipYpbOafuKVVMKp9+mWNkYNFLwVmlq7/+FH/E8ksXg==", "post"=>{"title"=>"sdf", "body"=>"dfsfds", "category_ids"=>[""]}, "send_for_moderation"=>"Опубликовать"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  INSERT INTO "posts" ("title", "body", "pending", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "sdf"], ["body", "dfsfds"], ["pending", "t"], ["user_id", 1], ["created_at", "2015-11-26 13:35:05.045371"], ["updated_at", "2015-11-26 13:35:05.045371"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "subscribers_posts" ("user_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["post_id", 42], ["created_at", "2015-11-26 13:35:05.051743"], ["updated_at", "2015-11-26 13:35:05.051743"]]
+  [1m[35m (25.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/posts/42
+Completed 302 Found in 49ms (ActiveRecord: 28.4ms)
+
+
+Started GET "/posts/42" for 127.0.0.1 at 2015-11-26 16:35:05 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 42]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 42]]
+  Rendered posts/_category_list.html.erb (6.4ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (1.2ms)
+  Rendered posts/_status.html.erb (0.3ms)
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = ? LIMIT 1[0m  [["post_id", 42]]
+  Rendered error/_handle.html.erb (0.0ms)
+  Rendered comments/_form.html.erb (3.8ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered posts/_private_links.html.erb (4.5ms)
+  Rendered posts/show.html.erb within layouts/application (26.8ms)
+  [1m[36mCategory Load (3.0ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 463ms (Views: 457.8ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/posts/drafts" for 127.0.0.1 at 2015-11-26 16:35:10 +0300
+Processing by PostsController#drafts as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."published" = ? AND "posts"."pending" = ? AND "posts"."user_id" = ?  ORDER BY "posts"."created_at" DESC[0m  [["published", "f"], ["pending", "f"], ["user_id", 1]]
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 41]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 41]]
+  Rendered posts/_category_list.html.erb (2.3ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (1.0ms)
+  Rendered posts/_status.html.erb (0.2ms)
+  Rendered posts/_private_links.html.erb (0.8ms)
+  [1m[36mCategory Exists (2.2ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 39]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 39]]
+  Rendered posts/_category_list.html.erb (4.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (1.3ms)
+  Rendered posts/_status.html.erb (0.2ms)
+  Rendered posts/_private_links.html.erb (0.6ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 36]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 36]]
+  Rendered posts/_category_list.html.erb (2.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  Rendered posts/_private_links.html.erb (0.7ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 23]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 23]]
+  Rendered posts/_category_list.html.erb (2.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (1.5ms)
+  Rendered posts/_status.html.erb (0.2ms)
+  Rendered posts/_private_links.html.erb (0.7ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 20]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 20]]
+  Rendered posts/_category_list.html.erb (2.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (1.0ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  Rendered posts/_private_links.html.erb (0.7ms)
+  Rendered posts/_post.html.erb (54.6ms)
+  Rendered posts/index.html.erb within layouts/application (62.5ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 210ms (Views: 201.3ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/posts/41/send_for_moderation" for 127.0.0.1 at 2015-11-26 16:35:14 +0300
+Processing by PostsController#send_for_moderation as HTML
+  Parameters: {"id"=>"41"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 41]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "posts" SET "pending" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["pending", "t"], ["updated_at", "2015-11-26 13:35:14.048766"], ["id", 41]]
+  [1m[35m (39.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/posts/drafts
+Completed 302 Found in 54ms (ActiveRecord: 40.3ms)
+
+
+Started GET "/posts/drafts" for 127.0.0.1 at 2015-11-26 16:35:14 +0300
+Processing by PostsController#drafts as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."published" = ? AND "posts"."pending" = ? AND "posts"."user_id" = ?  ORDER BY "posts"."created_at" DESC  [["published", "f"], ["pending", "f"], ["user_id", 1]]
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 39]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 39]]
+  Rendered posts/_category_list.html.erb (2.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.9ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  Rendered posts/_private_links.html.erb (0.5ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 36]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 36]]
+  Rendered posts/_category_list.html.erb (1.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.8ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  Rendered posts/_private_links.html.erb (0.6ms)
+  [1m[36mCategory Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1[0m  [["post_id", 23]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?  [["post_id", 23]]
+  Rendered posts/_category_list.html.erb (2.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered posts/_author.html.erb (0.7ms)
+  Rendered posts/_status.html.erb (0.1ms)
+  Rendered posts/_private_links.html.erb (0.5ms)
+  [1m[35mCategory Exists (0.1ms)[0m  SELECT  1 AS one FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ? LIMIT 1  [["post_id", 20]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_posts" ON "categories"."id" = "categories_posts"."category_id" WHERE "categories_posts"."post_id" = ?[0m  [["post_id", 20]]
+  Rendered posts/_category_list.html.erb (1.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered posts/_author.html.erb (0.7ms)
+  Rendered posts/_status.html.erb (0.5ms)
+  Rendered posts/_private_links.html.erb (0.5ms)
+  Rendered posts/_post.html.erb (28.9ms)
+  Rendered posts/index.html.erb within layouts/application (31.4ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 164ms (Views: 156.7ms | ActiveRecord: 1.1ms)
