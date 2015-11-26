@@ -1,0 +1,28 @@
+ru:
+  activerecord:
+    attributes:
+      post:
+        title: 'Заголовок'
+        body: 'Текст публикации'
+        categories: 'Категории'
+      comment:
+        body: 'Текст комментария'
+      category:
+        title: 'Название категории'
+    errors:
+      models:
+        post:
+          attributes:
+            title:
+              blank: 'не должен быть пустым'
+            body:
+              blank: 'не должен быть пустым'
+        comment:
+          attributes:
+            title:
+              blank: 'не должен быть пустым'
+        category:
+          attributes:
+            title:
+              blank: 'не должно быть пустым'
+              taken: 'не должно повторяться'
