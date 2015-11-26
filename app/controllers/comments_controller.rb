@@ -11,9 +11,9 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
-      flash[:notice] = 'Комментарий успешно добавлен.'
+      flash[:notice] = t('.notice')
     else
-      flash[:alert] = 'Комментарий не должен быть пустым'
+      flash[:alert] = t('.alert')
     end
     redirect_to @post
   end
@@ -21,9 +21,9 @@ class CommentsController < ApplicationController
   def update
     abort_if_not_authorized(@comment)
     if @comment.update(comment_params)
-      redirect_to @comment.post, notice: 'Комментарий успешно обновлен.'
+      redirect_to @comment.post, notice:t('.notice')
     else
-      flash.now[:alert] = 'Комментарий не должен быть пустым'
+      flash.now[:alert] = t('.alert')
       render :edit
     end
   end
@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
   def destroy
     abort_if_not_authorized(@comment)
     @comment.destroy
-    redirect_to @comment.post, notice: 'Комментарий успешно удален.'
+    redirect_to @comment.post, notice:t('.notice')
   end
 
   private
