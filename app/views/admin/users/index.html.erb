@@ -7,8 +7,8 @@
       <% if user.admin? %>
           <span class="big_list_items"> (администратор) </span>
       <% end %>
-      <span class="links">
-        | <%= link_to "Удалить", [:admin, user], method: :delete,
+      <span class="links">&nbsp&nbsp&nbsp
+         <%= delete_link [:admin, user], method: :delete,
                     data:{confirm:"Вы уверены, что хотите удалить пользователя \"#{user.email}\"?"}%>
       </span>
     </p>

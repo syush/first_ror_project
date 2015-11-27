@@ -1,24 +1,24 @@
 <% if have_rights_for?(post) %>
-    <%= link_to t('.edit'), edit_post_path(post) %>&nbsp&nbsp
-    <%= link_to t('.delete'), post, method: :delete,
-        data:{confirm: t('.confirm_delete', title:post.title)}%>&nbsp&nbsp
+    <%= edit_link edit_post_path(post) %>&nbsp&nbsp
+    <%= delete_link post, method: :delete,
+                    data:{confirm: t('.confirm_delete', title:post.title)}%>&nbsp&nbsp
     <% if post.published? || (post.pending? && !under_admin?)%>
-        <%= link_to t('.unpublish'), unpublish_post_path(post),
+        <%= icon_link_to 'briefcase', unpublish_post_path(post), title:t('.unpublish'),
             data:{confirm: t('.confirm_unpublish')} %>&nbsp&nbsp
     <% elsif post.pending? %>
-        <%= link_to t('.approve'), approve_admin_post_path(post),
+        <%= icon_link_to 'thumbs-o-up', approve_admin_post_path(post), title:t('.approve'),
             data:{confirm: t('.confirm_approve', title:post.title)}%>&nbsp&nbsp
-        <%= link_to t('.discard'), discard_admin_post_path(post),
+        <%= icon_link_to 'thumbs-o-down', discard_admin_post_path(post), title:t('.discard'),
             data:{confirm: t('.confirm_discard', title:post.title)} %>&nbsp&nbsp
     <% else %>
-        <%= link_to t('.publish'), send_for_moderation_post_path(post),
+        <%= icon_link_to 'globe', send_for_moderation_post_path(post), title:t('.publish'),
             data:{confirm: t('.confirm_publish', title:post.title)} %>&nbsp&nbsp
     <% end %>
 <% end %>
 <% if current_user && post.published? %>
     <% if (current_user.subscribed_on?(post)) %>
-       <%= link_to t('.unsubscribe'), unsubscribe_post_path(post) %>&nbsp&nbsp
+       <%= icon_link_to 'envelope', unsubscribe_post_path(post), title:t('.unsubscribe')%>&nbsp&nbsp
     <% else %>
-       <%= link_to t('.subscribe'), subscribe_post_path(post) %>&nbsp&nbsp
+       <%= icon_link_to 'envelope-o', subscribe_post_path(post), title: t('.subscribe')%>&nbsp&nbsp
     <% end %>
 <% end %>

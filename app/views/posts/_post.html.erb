@@ -5,7 +5,7 @@
     <p><%= render 'posts/status', post:post %></p>
     <p><%= truncate(post.body, length:100) %></p>
     <p class="links">
-      <%= link_to t('.read_on'), post %>&nbsp&nbsp
+      <%= icon_link_to 'eye', post, title:t('.read_on')  %>&nbsp&nbsp
       <%= render 'posts/private_links', post:post %>
     </p>
     <br>

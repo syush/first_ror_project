@@ -2,11 +2,11 @@
 <% @categories.each do |category| %>
     <p>
       <span class="big_list_items">
-        <%= category.title %> |
+        <%= category.title %>&nbsp&nbsp&nbsp&nbsp
       </span>
       <span class="links">
-        <%= link_to t('.edit'), edit_admin_category_path(category) %> |
-        <%= link_to t('.delete'), [:admin, category], method: :delete,
+        <%= edit_link edit_admin_category_path(category) %>&nbsp&nbsp
+        <%= delete_link [:admin, category], method: :delete,
                     data:{confirm: t('.confirm_delete', title:category.title)}%>
       </span>
     </p>

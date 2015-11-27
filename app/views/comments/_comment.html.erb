@@ -10,10 +10,10 @@
   <p class="comment_body col-md-6">
     <%= comment.body %>
   </p>
-  <p class="links col-md-3">
+  <p class="comment_links col-md-3">
     <% if have_rights_for?(comment) %>
-      <%= link_to t('.edit'), edit_comment_path(comment) %> |
-      <%= link_to t('.delete'), comment, method: :delete, data:{confirm: t('.confirm_delete')} %>
+      <%= edit_link edit_comment_path(comment) %>&nbsp&nbsp
+      <%= delete_link comment, method: :delete, data:{confirm: t('.confirm_delete')} %>
   <% end %>
   </p>
 </div>
