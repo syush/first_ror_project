@@ -9,6 +9,9 @@ ru:
         body: 'Текст комментария'
       category:
         title: 'Название категории'
+      user:
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
     errors:
       models:
         post:
