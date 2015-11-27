@@ -26,3 +26,7 @@ ru:
             title:
               blank: 'не должно быть пустым'
               taken: 'не должно повторяться'
+        user:
+          attributes:
+            email:
+              taken: 'уже зарегистрирован'
