@@ -33,3 +33,5 @@ ru:
               blank: 'не должен быть пустым'
             password:
               blank: 'не должен быть пустым'
+            password_confirmation:
+              confirmation: 'не совпадает с паролем'
