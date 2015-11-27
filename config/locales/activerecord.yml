@@ -12,6 +12,7 @@ ru:
       user:
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
+        remember_me : 'Запомнить меня'
     errors:
       models:
         post:
