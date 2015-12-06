@@ -1,14 +1,19 @@
 <h1 class="page_name"><%= t('.title') %></h1>
-<% @categories.each do |category| %>
-    <p>
-      <span class="big_list_items">
-        <%= category.title %>&nbsp&nbsp&nbsp&nbsp
+<%= render 'error/handle', :errors => @error_category.errors if @error_category %>
+<% i = 0; @categories.each do |category| %>
+
+    <div class="item<%= i += 1%>">
+      <span class="big_list_items category_title">
+        <span class="title"><%= category.title %></span>&nbsp&nbsp&nbsp&nbsp
       </span>
+      <span class="form"><%= render "form", category:category %></span>
       <span class="links">
-        <%= edit_link edit_admin_category_path(category) %>&nbsp&nbsp
+        <span class="edit-link">
+          <a href="#"></a>
+        </span>
         <%= delete_link [:admin, category], method: :delete,
                     data:{confirm: t('.confirm_delete', title:category.title)}%>
       </span>
-    </p>
+    </div>
 <% end %>
 <p class="links"><%= link_to t('.create_new'), new_admin_category_path %></p>

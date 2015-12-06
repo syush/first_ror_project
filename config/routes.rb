@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
 
   namespace :admin do
-    resources :categories, except: [:show]
+    resources :categories, except: [:show, :edit]
     resources :users, only: [:index, :destroy]
     resources :posts, only: [] do
       get :approve, on: :member

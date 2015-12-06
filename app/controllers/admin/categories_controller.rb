@@ -1,15 +1,12 @@
 class Admin::CategoriesController < Admin::BaseController
 
-  before_action :set_category, only: [:edit, :update, :destroy]
+  before_action :set_category, only: [:update, :destroy]
 
   def index
   end
 
   def new
     @category = Category.new
-  end
-
-  def edit
   end
 
   def create
@@ -25,7 +22,8 @@ class Admin::CategoriesController < Admin::BaseController
     if @category.update(category_params)
       redirect_to admin_categories_path, notice: t('.notice')
     else
-      render :edit
+      @error_category = @category
+      render :index
     end
   end
 

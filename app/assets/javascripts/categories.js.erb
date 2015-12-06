@@ -1,0 +1,25 @@
+var $cancel_link_html = "<i class='fa fa-times links'></i>  <%= I18n.t(:cancel) %>";
+var $edit_link_html = "<i class='fa fa-pencil-square-o links'>  <%= I18n.t(:edit) %> </i>";
+var $form_open = false;
+
+$(document).ready(function() {
+    $('.form').hide();
+    $('.edit-link a').html($edit_link_html);
+    $('.edit-link a').click(function() {
+        var categoryID = $($($(this).parents()[0]).parents()[0]).parents()[0].classList[0];
+        var link_html = $edit_link_html;
+        $form_open = !$form_open;
+        var link_html = $form_open ? $cancel_link_html : $edit_link_html;
+        $("." + categoryID + " .form").toggle();
+        var category_title = $("." + categoryID + " .category_title .title").text();
+        $("." + categoryID + " .form .category_field input:text").val(category_title);
+        $("." + categoryID + " .category_title").toggle();
+        $("." + categoryID + " .links .edit-link a").html(link_html);
+    })
+    $('.category_submit').click(function(){
+        if ($("#" + $($(this).parents()[0]).attr('id') + " .category_field input:text").val() == "") {
+            alert("<%= I18n.t('admin.categories.edit.empty')%>");
+            return false;
+        }
+    })
+})

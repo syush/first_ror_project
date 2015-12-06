@@ -1,5 +1,6 @@
 <h1 class="page_name"><%= t('.title') %></h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Отменить', admin_categories_path %>
+<%= render 'form', category:@category %>
+<div class="links">
+  <%= link_to t(:cancel), admin_categories_path %>
+</div>
