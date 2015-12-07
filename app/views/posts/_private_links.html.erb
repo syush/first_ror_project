@@ -1,5 +1,4 @@
 <% if have_rights_for?(post) %>
-    <%= edit_link edit_post_path(post) %>&nbsp&nbsp
     <%= delete_link post, method: :delete,
                     data:{confirm: t('.confirm_delete', title:post.title)}%>&nbsp&nbsp
     <% if post.published? || (post.pending? && !under_admin?)%>

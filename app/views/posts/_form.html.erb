@@ -3,11 +3,11 @@
 
   <div class="field">
     <strong><%= f.label :title %></strong>
-    <p><%= f.text_field :title %></p>
+    <p class="non-empty"><%= f.text_field :title %></p>
   </div>
   <div class="field">
     <strong><%= f.label :body %></strong>
-    <p><%= f.text_area :body %></p>
+    <p class="non-empty"><%= f.text_area :body %></p>
   </div>
   <div class="field">
     <strong><%= f.label :categories %></strong>
@@ -20,7 +20,7 @@
     <p><%= t('.published_instruction') %></p>
     <p><%= t('.published_warning') %></p>
   <% end %>
-  <div class="actions">
+  <div class="submit">
     <%= f.submit t('.submit_draft'), name: :unpublish %>
     <%= f.submit t('.submit_publish'), name: :send_for_moderation %>
   </div>

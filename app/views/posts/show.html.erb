@@ -1,26 +1,39 @@
-<h2 class="post_title"><%= @post.title %></h2>
-<% render 'error/handle', :errors => @error_comment.errors if @error_comment %>
-<p class="post_categories"><%= render 'category_list', post:@post %></p>
-<p class="post_author"><%= render 'author', post:@post %></p>
-<p><%= render 'posts/status', post:@post %></p>
-<p class="field_navigation"></p>
-<% @post.body.split("\n").each do |paragraph| %>
-  <p class="post_body"><%= paragraph %></p>
-<% end %>
-<hr>
-<% if @post.comments.any? %>
-  <h4 class="field_navigation"><%= t('.comments') %>:</h4>
-  <% i=0; @post.comments.each do |comment| %>
-    <%= render comment, i:i %>
-    <% i += 1%>
+<div id="entire_post">
+  <div class="form">
+    <%= render 'form' %>
+  </div>
+  <%= render 'error/handle', :errors => @error_comment.errors if @error_comment %>
+  <div class="current_text">
+    <h2 class="post_title current_title"><%= @post.title %></h2>
+    <p class="post_categories"><%= render 'category_list', post:@post %></p>
+    <p class="post_author"><%= render 'author', post:@post %></p>
+    <p><%= render 'posts/status', post:@post %></p>
+
+    <p class="post_body current_text">
+      <%  @post.body.split("\n").each do |paragraph| %>
+         <%= paragraph %>
+         <br>
+      <% end %>
+    </p>
+  </div>
+  <hr>
+  <% if @post.comments.any? %>
+    <h4 class="field_navigation"><%= t('.comments') %>:</h4>
+    <% i=0; @post.comments.each do |comment| %>
+      <%= render comment, i:i %>
+      <% i += 1%>
+    <% end %>
+    <h4 class="field_navigation"><%= t('.leave_comment') %>:</h4>
+  <% else %>
+    <h4 class="field_navigation"><%= t('.no_comments') %></h4>
   <% end %>
-  <h4 class="field_navigation"><%= t('.leave_comment') %>:</h4>
-<% else %>
-  <h4 class="field_navigation"><%= t('.no_comments') %></h4>
-<% end %>
-<%= render 'comments/form', comment:@comment %>
-<hr>
-<p class="links">
-  <%= render 'posts/private_links', post: @post %>
-  <%= link_to t('.list_all'), posts_path %>
-</p>
+  <%= render 'comments/form', comment:@comment %>
+  <hr>
+  <p class="links">
+    <% if have_rights_for?(@post) %>
+        <span class="edit-link"><a href="#"></a></span>&nbsp&nbsp
+    <% end %>
+    <%= render 'posts/private_links', post: @post %>
+    <%= link_to t('.list_all'), posts_path %>
+  </p>
+</div>

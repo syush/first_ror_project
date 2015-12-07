@@ -11,6 +11,11 @@ module ApplicationHelper
     icon_link_to('pencil-square-o', path, options)
   end
 
+  def cancel_link(path, options={})
+    options[:title] = t(:cancel)
+    icon_link_to('times', path, options)
+  end
+
   def inline_edit_link(status_edit, options={})
     if status_edit
       options[:title] = t(:edit)

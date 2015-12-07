@@ -20,6 +20,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to @comment.post, notice:t('.notice')
     else
+      @error_comment = @comment
       redirect_to @comment.post, alert:t('.alert')
     end
   end

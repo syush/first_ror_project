@@ -7,10 +7,11 @@
       </span>
       <span class="form"><%= render "form", category:category %></span>
       <span class="links">
-        <span class="edit-link"><a href="#"></a></span>
+        <span class="edit-link"><a href="#"></a></span>&nbsp&nbsp
         <%= delete_link [:admin, category], method: :delete,
                     data:{confirm: t('.confirm_delete', title:category.title)}%>
       </span>
     </div>
 <% end %>
-<p class="links"><%= link_to t('.create_new'), new_admin_category_path %></p>
+<hr>
+<p class="links"><%= icon_link_to 'file-o', new_admin_category_path, title:t('.create_new') %></p>

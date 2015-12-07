@@ -1,4 +1,4 @@
 <%= form_for([:admin, category], html:{style:'display:inline-block'}) do |f| %>
-    <span class="field"> <%= f.text_area :title, rows:1  %> </span>
+    <span class="field non-empty"> <%= f.text_field :title  %> </span>
     <span class="submit"><%= f.submit t('.submit') %></span>
 <% end %>

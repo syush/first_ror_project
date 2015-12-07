@@ -2,6 +2,7 @@ ru:
   back: 'Назад'
   cancel: 'Отменить'
   edit: 'Редактировать'
+  cancel_edit: 'Оставить как было'
   delete: 'Удалить'
   empty_field: 'Поле не может быть пустым.'
   layouts:
@@ -38,7 +39,7 @@ ru:
       submit_draft: 'Поместить в черновики'
       submit_publish: 'Опубликовать'
     post:
-      read_on: 'Читать далее...'
+      read_on: 'Читать далее'
     private_links:
       unpublish: 'Убрать в черновики'
       approve: 'Одобрить'
