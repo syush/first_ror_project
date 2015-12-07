@@ -1,4 +1,5 @@
 <h2 class="post_title"><%= @post.title %></h2>
+<% render 'error/handle', :errors => @error_comment.errors if @error_comment %>
 <p class="post_categories"><%= render 'category_list', post:@post %></p>
 <p class="post_author"><%= render 'author', post:@post %></p>
 <p><%= render 'posts/status', post:@post %></p>
@@ -9,12 +10,15 @@
 <hr>
 <% if @post.comments.any? %>
   <h4 class="field_navigation"><%= t('.comments') %>:</h4>
-  <%= render @post.comments %>
+  <% i=0; @post.comments.each do |comment| %>
+    <%= render comment, i:i %>
+    <% i += 1%>
+  <% end %>
   <h4 class="field_navigation"><%= t('.leave_comment') %>:</h4>
 <% else %>
   <h4 class="field_navigation"><%= t('.no_comments') %></h4>
 <% end %>
-<%= render 'comments/form' %>
+<%= render 'comments/form', comment:@comment %>
 <hr>
 <p class="links">
   <%= render 'posts/private_links', post: @post %>

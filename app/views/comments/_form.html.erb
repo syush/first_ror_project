@@ -1,10 +1,10 @@
-<%= form_for([@post, @comment]) do |f| %>
-  <% render 'error/handle', :errors => @comment.errors  %>
-
-  <div class="field">
-    <p></p><%= f.text_area :body %><p></p>
-  </div>
-  <div class="actions">
+<%= form_for(comment, html:{style:'display:inline-block'}) do |f| %>
+  <span class="field">
+    <%= f.hidden_field :post_id, value: comment.post_id %>
+    <%= f.text_area :body %>
+  </span>
+  <br>
+  <span class="submit">
     <%= f.submit t('.submit') %>
-  </div>
+  </span>
 <% end %>

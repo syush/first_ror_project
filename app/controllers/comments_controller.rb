@@ -1,21 +1,18 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
-  def edit
-    abort_if_not_authorized(@comment)
-  end
+  before_action :set_comment, only: [:show, :update, :destroy]
 
   def create
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.new(comment_params)
+   # @post = Post.find(params[:post_id])
+   # @comment = @post.comments.new(comment_params)
+    @comment = Comment.new(comment_params)
     @comment.user = current_user
     if @comment.save
       flash[:notice] = t('.notice')
     else
       flash[:alert] = t('.alert')
     end
-    redirect_to @post
+    redirect_to @comment.post
   end
 
   def update
@@ -23,8 +20,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to @comment.post, notice:t('.notice')
     else
-      flash.now[:alert] = t('.alert')
-      render :edit
+      redirect_to @comment.post, alert:t('.alert')
     end
   end
 
@@ -42,6 +38,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:body)
+      params.require(:comment).permit(:body, :post_id)
     end
 end

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="item<%= i+=1 || 1 %>">
 
   <p class="comment_author col-md-3">
     <% if current_user == comment.user %>
@@ -7,13 +7,14 @@
         <%= comment.user ? comment.user.email : t('.unknown_user') %> <%= t('.wrote') %>:
     <% end %>
   </p>
-  <p class="comment_body col-md-6">
-    <%= comment.body %>
-  </p>
-  <p class="comment_links col-md-3">
+  <span class="comment_body current_text col-md-6">
+    <span class="text"><%= comment.body %></span>
+  </span>
+  <span class="form col-md-6"><%= render 'comments/form', comment:comment %></span>
+  <p class="links col-md-3">
     <% if have_rights_for?(comment) %>
-      <%= edit_link edit_comment_path(comment) %>&nbsp&nbsp
+      <span class="edit-link"><a href="#"></a></span>&nbsp&nbsp
       <%= delete_link comment, method: :delete, data:{confirm: t('.confirm_delete')} %>
-  <% end %>
+    <% end %>
   </p>
 </div>

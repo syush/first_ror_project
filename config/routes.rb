@@ -10,8 +10,9 @@ Rails.application.routes.draw do
     get :unpublish, on: :member
     get :subscribe, on: :member
     get :unsubscribe, on: :member
-    resources :comments, only: [:edit, :create, :update, :destroy], shallow: true
+    #resources :comments, only: [:create]
   end
+  resources :comments , only: [:create, :edit, :update, :destroy]
 
   resources :categories, only: [:show]
 

@@ -1,16 +1,13 @@
 <h1 class="page_name"><%= t('.title') %></h1>
 <%= render 'error/handle', :errors => @error_category.errors if @error_category %>
 <% i = 0; @categories.each do |category| %>
-
-    <div class="item<%= i += 1%>">
-      <span class="big_list_items category_title">
-        <span class="title"><%= category.title %></span>&nbsp&nbsp&nbsp&nbsp
+    <div id="item<%= i += 1%>">
+      <span class="big_list_items current_text">
+        <span class="text"><%= category.title %></span>&nbsp&nbsp&nbsp&nbsp
       </span>
       <span class="form"><%= render "form", category:category %></span>
       <span class="links">
-        <span class="edit-link">
-          <a href="#"></a>
-        </span>
+        <span class="edit-link"><a href="#"></a></span>
         <%= delete_link [:admin, category], method: :delete,
                     data:{confirm: t('.confirm_delete', title:category.title)}%>
       </span>
